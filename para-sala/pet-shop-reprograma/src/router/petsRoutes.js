@@ -16,9 +16,9 @@ router.get('/services', controller.getServes)
 router.get('/stades', controller.getStades)
 //post
 router.post('/shop/add', controller.postPet)
-//put
-router.put('/shop/update', controller.putPet)
 //patch
+router.patch('/update/:id', controller.updateName)
+//put
 
 //delete
 

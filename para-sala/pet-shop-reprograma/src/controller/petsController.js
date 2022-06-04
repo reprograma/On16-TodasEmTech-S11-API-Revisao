@@ -37,13 +37,11 @@ const getServes = (req, res) => {
   });
   console.log(servesFilter);
   if (servesFilter.length > 0) {
-      res.status(200).send(servesFilter);
+    res.status(200).send(servesFilter);
   } else {
-    res.status(404).send([{message: "Not Found"
-      }]);
+    res.status(404).send([{ message: "Not Found" }]);
   }
 };
-
 
 const getStades = (req, res) => {
   const stadesReq = req.query.endereco;
@@ -89,17 +87,38 @@ const postPet = (req, res) => {
   res.status(200).send({ message: "Pet shop created succesfuly" });
 };
 
-const putPet = (req, res) => {
-    const idReq = req.params.id;
-    let petReq = req.body;
-    let indexFind = pets.findIndex((pet) => pet.id == idReq);
-    if (pets.splice(indexFind, 1, petReq)) {
-        res.status(200).send([{ message: "Updated Pet Shop"}])
-    }else{
-        res.status(404).send([{message: "Not Found"}])
-    }
-}
+const updateName = (req, res) => {
+  let idPetRequest = req.params.id;
+  let nomeFantasiaRequest = req.body.nomeFantasia;
 
+  const petFound = pets.find((pet) => pet.id == idPetRequest);
+  const petIndex = pets.indexOf(petFound);
+
+  if (petIndex != -1) {
+    petFound.nomeFantasia = nomeFantasiaRequest;
+
+    pets.splice(petIndex, 1, petFound);
+
+    fs.writeFile(
+      "./src/models/pets.json",
+      JSON.stringify(pets),
+      "utf8",
+      function (err) {
+        if (err) {
+          res.status(500).send({ message: err });
+        } else {
+          console.log("Teu arquivo foi alterado");
+          const petUpdated = pets.find((pet) => pet.id == idPetRequest);
+          res.status(200).send(petUpdated);
+        }
+      }
+    );
+  } else {
+    res.status(404).send({
+      message: "Nao encontramos esse petshop, cadastra ai miga",
+    });
+  }
+};
 
 module.exports = {
   getAllShop,
@@ -107,5 +126,5 @@ module.exports = {
   getServes,
   getStades,
   postPet,
-  putPet
+  updateName,
 };
