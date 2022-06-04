@@ -28,5 +28,26 @@
             "ursos",
             "orcs"
         ]
+    },
+    {
+        "id": 4,
+        "nomeFantasia": "Petinhos",
+        "endereco": "rua dos bobos",
+        "telefone": "2416454156",
+        "atende": [
+            "gato",
+            "elefante"
+        ]
+    },
+    {
+        "id": 5,
+        "nomeFantasia": "petpeixe",
+        "endereco": "oceano",
+        "telefone": "159786254",
+        "atende": [
+            "tubarão",
+            "golfinho",
+            "baleia"
+        ]
     }
 ]
