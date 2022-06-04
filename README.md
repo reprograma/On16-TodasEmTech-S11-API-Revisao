@@ -1,10 +1,9 @@
-REVISAO - SEMANA 11 -  TURMA ON16
 <br>
 Os slides da aula tão [aqui](https://github.com/reprograma/On16-TodasEmTech-S11-API-Revisao/blob/main/material/revisao.pdf) ❤️
 
 <h1 align="center">
     <br>
-    <p align="center">Exercícios<p>
+    <p align="center">Aulinha de Revisão da On16<p>
 </h1>
 
 # Simbora, gatinhas?!
