@@ -2,7 +2,7 @@
 const express = require ('express') 
 
 //importando a continuação das rotas
-const petRoutes = require ('./router/petRoutes')
+const petRoutes = require ('./router/petsRoutes')
 
 //executar o expess
 const app = express ()
