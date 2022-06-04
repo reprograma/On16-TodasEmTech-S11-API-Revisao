@@ -8,11 +8,7 @@ const controller = require ('../controller/petsController')
 
 //criando as rotas
 
-router.post ('/adicionar', controller.postPet)
-
-
-
-
+router.post ('/adicionar', controller.postPets)
 
 
 module.exports = router;
