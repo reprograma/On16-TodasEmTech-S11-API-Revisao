@@ -18,5 +18,14 @@
             "caes",
             "papagaio"
         ]
+    },
+    {
+        "id": 3,
+        "nomeFantasia": "Pet Shop Andreza",
+        "endereco": "minha casa",
+        "telefone": "81 99474589",
+        "atende": [
+            "caes"
+        ]
     }
 ]
