@@ -1,0 +1,23 @@
+{
+  "name": "on16-todasemtech-s11-api-revisao",
+  "version": "1.0.0",
+  "description": "Os slides da aula tão [aqui](https://github.com/reprograma/On16-TodasEmTech-S11-API-Revisao/blob/main/material/revisao.pdf) ❤️",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Majobueno/On16-TodasEmTech-S11-API-Revisao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Majobueno/On16-TodasEmTech-S11-API-Revisao/issues"
+  },
+  "homepage": "https://github.com/Majobueno/On16-TodasEmTech-S11-API-Revisao#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}
