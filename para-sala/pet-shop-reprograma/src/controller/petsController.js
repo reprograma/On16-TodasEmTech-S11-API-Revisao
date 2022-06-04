@@ -14,6 +14,7 @@ const petFound = pets.find(pet => pet.id == id) // recupero o pet que foi criado
 response.status(200).send(petFound)
 }
 })
+response.status(200).send({'message': 'Adicionado com sucesso'})
 }
 
 module.exports = {
