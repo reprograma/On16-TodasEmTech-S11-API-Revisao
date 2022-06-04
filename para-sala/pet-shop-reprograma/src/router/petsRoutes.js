@@ -9,7 +9,7 @@ const router = express.Router();
 //get
 router.get("/allShop", controller.getAllShop)
 //get/id
-
+router.get("/shop/:id", controller.getIdShop)
 //get/atendimento
 
 //get/estado
