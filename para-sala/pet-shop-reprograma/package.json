@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Majobueno/On16-TodasEmTech-S11-API-Revisao#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "fs": "^0.0.1-security",
     "nodemon": "^2.0.16"
   },
   "keywords": []
