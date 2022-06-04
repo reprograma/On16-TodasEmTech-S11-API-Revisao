@@ -25,7 +25,7 @@ const updateName = (request, response) => {
     const petFound = pets.find(pet => pet.id == idPetRequest)
     const petIndex = pets.indexOf(petFound)
 
-    if (petIndex > 0) {
+    if (petIndex >= 0) {
         petFound.nomeFantasia = nomeFantasiaRequest
         pets.splice(petIndex, 1, petFound)
         fs.writeFile("./src/models/pets.json", JSON.stringify(pets), 'utf8', function (err) { // gravando novo pet no array de pets
