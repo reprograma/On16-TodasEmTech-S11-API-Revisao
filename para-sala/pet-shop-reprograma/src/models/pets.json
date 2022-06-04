@@ -18,5 +18,15 @@
             "caes",
             "papagaio"
         ]
+    },
+    {
+        "id": 3,
+        "nomeFantasia": "Pet Tudo",
+        "endereco": "reprogata",
+        "telefone": "123456789",
+        "atende": [
+            "ursos",
+            "orcs"
+        ]
     }
 ]
