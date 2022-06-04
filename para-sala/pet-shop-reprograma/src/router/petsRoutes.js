@@ -6,4 +6,4 @@ const controller = require('../controller/petsController')
 router.post('/adicionar', controller.postPet)
 
 
-modules.exports = router
+module.exports = router
