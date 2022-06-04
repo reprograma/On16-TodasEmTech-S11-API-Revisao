@@ -7,16 +7,17 @@ const router = express.Router();
 
 
 //get
-router.get('/allShop', controller.getAllShop)
+router.get('/shop/all', controller.getAllShop)
 //get/id
 router.get('/shop/:id', controller.getIdShop)
 //get/atendimento
-router.get('/shop/services', controller.getServes)
-//get/estado router.get('/shop/stades', controller.getStades)
+router.get('/services', controller.getServes)
+//get/estado 
+router.get('/stades', controller.getStades)
 //post
 router.post('/shop/add', controller.postPet)
 //put
-
+router.put('/shop/update', controller.putPet)
 //patch
 
 //delete

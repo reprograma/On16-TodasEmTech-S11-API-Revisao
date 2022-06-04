@@ -1,22 +1,37 @@
 [
-    {
-        "id": 1,
-        "nomeFantasia": "Pet Shop 1",
-        "endereco": "Avenida Paulista, 1273 - Sao Paulo",
-        "telefone": "11 12345-6789",
-        "atende": [
-            "caes",
-            "gatos"
-        ]
-    },
-    {
-        "id": 2,
-        "nomeFantasia": "Pet Shop 2",
-        "endereco": "Recife, 1273 - Pernambuco",
-        "telefone": "11 98765-4321",
-        "atende": [
-            "caes",
-            "papagaio"
-        ]
-    }
+  {
+    "id": 1,
+    "nomeFantasia": "Pet Shop 1",
+    "endereco": "Avenida Paulista, 1273 - Sao Paulo",
+    "telefone": "11 12345-6789",
+    "atende": ["caes", "gatos"]
+  },
+  {
+    "id": 2,
+    "nomeFantasia": "Pet Shop 2",
+    "endereco": "Recife, 1273 - Pernambuco",
+    "telefone": "11 98765-4321",
+    "atende": ["caes", "papagaio"]
+  },
+  {
+    "id": 3,
+    "nomeFantasia": "Bixas Cia.",
+    "endereco": "Babylon 1234, - Chromatica",
+    "telefone": " 24 6969 2424 ",
+    "atende": ["unicornios", "dragões"]
+  },
+  {
+    "id": 4,
+    "nomeFantasia": "Terra  Media: pet shop",
+    "endereco": "Moria 1234, - Montanhas Sombrias",
+    "telefone": "52 7856 9321 ",
+    "atende": ["orcs", "dragões", "unicornios"]
+  },
+  {
+    "id": 5,
+    "nomeFantasia": "Blade Runner: pet shop",
+    "endereco": "Los Angeles 2049, - E.U.A.",
+    "telefone": "23 6879 6359 ",
+    "atende": ["ovelhas", "corujas"]
+  }
 ]
