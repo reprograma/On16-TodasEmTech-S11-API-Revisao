@@ -11,7 +11,7 @@ router.get("/allShop", controller.getAllShop)
 //get/id
 router.get("/shop/:id", controller.getIdShop)
 //get/atendimento
-
+router.get("/shop/services", controller.getServes)
 //get/estado
 
 //post

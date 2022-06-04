@@ -13,18 +13,40 @@ const getAllShop = (req, res) => {
 };
 
 const getIdShop = (req, res) => {
-    const shopReq = req.params.id
-    const shopFilter = pets.filter((pets) => pets.id == shopReq);
-    if (shopFilter.length > 0) {
-        res.status(200).send(shopFilter);
-    }else{
-        res.status(404).send({
-            message: "Not Found",
-        })
-    }
-}
+  const shopReq = req.params.id;
+  const shopFilter = pets.filter((pets) => pets.id == shopReq);
+  if (shopFilter.length > 0) {
+    res.status(200).send(shopFilter);
+  } else {
+    res.status(404).send({
+      message: "Not Found",
+    });
+  }
+};
+
+const getServes = (req, res) => {
+  let servesReq = req.query.atende.toLowerCase();
+
+  let servesFilter = pets.filter((animals) => {
+    servesLowerCase = animals.atende.map((animalsArray) =>
+      animalsArray.toLowerCase()
+    );
+    return servesLowerCase.includes(servesReq);
+  });
+  console.log(servesFilter);
+  if (servesFilter.length > 0) {
+    res.status(200).send(servesFilter);
+  } else {
+    res.status(404).send([
+      {
+        message: "Not Found",
+      },
+    ]);
+  }
+};
 
 module.exports = {
   getAllShop,
   getIdShop,
+  getServes,
 };
