@@ -1,14 +1,13 @@
-/*const controller = require('../controller/petsController')
+const controller = require('../controller/petsController')
 
 const express = require('express');
-const { patch } = require('../app');
 
 
 const router = express.Router();
 
 
 //get
-router.get()
+router.get("/allShop", controller.getAllShop)
 //get/id
 
 //get/atendimento
@@ -24,9 +23,4 @@ router.get()
 //delete
 
 
-delete
-
-
-module.exports = {
-
-}
+module.exports = router;
