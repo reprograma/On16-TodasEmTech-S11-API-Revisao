@@ -1,7 +1,7 @@
 //Iniciando servidor
 const app = require("./src/app")
 
-const PORT = 3030
+const PORT = 1313
 
 app.listen(PORT, () => {
 	console.log(`Seu servidor está na porta ${PORT}`)
