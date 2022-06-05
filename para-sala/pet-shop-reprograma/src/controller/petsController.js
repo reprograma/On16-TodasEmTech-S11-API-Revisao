@@ -35,6 +35,40 @@ const postPet = (req, res) => {
     })
 }
 
+const updateName = (req, res) => {
+
+    let idPetRequest = req.params.id
+    let nomeFantasiaRequest = req.body.nomeFantasia
+
+    const petFound = pets.find(pet => pet.id == idPetRequest) // Encontrando o pet
+    const petIndex = pets.indexOf(petFound) // Identificando o indice do pet no meu array
+
+    if (petIndex >= 0) {
+        petFound.nomeFantasia = nomeFantasiaRequest
+        //encontrou , remove , adiciona
+        pets.splice(petIndex, 1, petFound)
+
+        fs.writeFile("./src/models/pets.json", JSON.stringify(pets), 'utf8', function (err) { // gravando novo pet no array de pets
+            if (err) {
+                res.status(500).send({
+                    message: err
+                })
+            } else {
+                console.log("Seu arquivo foi alterado com sucesso!")
+                const petUpdate = pets.find(pet => pet.id == idPetRequest)
+                res.status(200).send(petUpdate)
+            }
+        })
+
+    } else {
+        res.status(404).send({message: "Não encontramos esse petshop, é necessário cadastra-lo"})
+    }
+}
+
+
+
+
 module.exports = {
-    postPet
+    postPet,
+    updateName
 }
