@@ -1,1 +1,25 @@
-[{"id":1,"nomeFantasia":"Pet Shop 1","endereco":"Avenida Paulista, 1273 - Sao Paulo","telefone":"11 12345-6789","atende":["caes","gatos"]},{"id":2,"nomeFantasia":"Pet Shop 2","endereco":"Recife, 1273 - Pernambuco","telefone":"11 98765-4321","atende":["caes","papagaio"]},{"id":3,"nomeFantasia":"Pets lindinhos e fofos","endereco":"caixa bozó","telefone":"66 66666666","atende":["cacatua","raposinhas fofas"]},{"id":4,"nomeFantasia":"Pets lindinhos e fofos","endereco":"caixa bozó","telefone":"66 66666666","atende":["cacatua","raposinhas fofas"]}]
+[{
+    "id": 1,
+    "nomeFantasia": "Petshop dos bixinhos mais fofinhos",
+    "endereco": "Avenida Paulista, 1273 - Sao Paulo",
+    "telefone": "11 12345-6789",
+    "atende": ["caes", "gatos"]
+}, {
+    "id": 2,
+    "nomeFantasia": "Pet Shop 2",
+    "endereco": "Recife, 1273 - Pernambuco",
+    "telefone": "11 98765-4321",
+    "atende": ["caes", "papagaio"]
+}, {
+    "id": 3,
+    "nomeFantasia": "Pets lindinhos e fofos",
+    "endereco": "caixa bozó",
+    "telefone": "66 66666666",
+    "atende": ["cacatua", "raposinhas fofas"]
+}, {
+    "id": 4,
+    "nomeFantasia": "Pets lindinhos e fofos",
+    "endereco": "caixa bozó",
+    "telefone": "66 66666666",
+    "atende": ["cacatua", "raposinhas fofas"]
+}]
