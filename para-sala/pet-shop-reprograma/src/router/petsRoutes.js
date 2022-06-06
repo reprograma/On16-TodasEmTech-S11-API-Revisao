@@ -9,7 +9,7 @@ const controller = require('../controller/petsController')
 //criando as rotas
 
 router.post('/adicionar', controller.postPets)
-router.patch ('/nome/id', controller.updateNome)
+router.patch ('/nome/:id', controller.updateNome)
 
 
 module.exports = router;

@@ -42,25 +42,25 @@ const postPets = (req, res) => {
     })
 }
 
-
+//localhost:1313/pets/nome/1
 const updateNome = (req, res) => {
     let idPetRequest = req.params.id
     let nomeFantasiaRequest = req.body.nomeFantasia
-    
+
     //Procure em pets.json o ID e compare se está igual ao IdRequest e guarde na const petFound 
-    const petFound = pets.find (pet => pet.id == idPetRequest) 
+    const petFound = pets.find(pet => pet.id == idPetRequest)
 
     //identificando o indice do pet no meu array através do PetFound (PetFound é o meu ID)
-    const petIndex = pets.indexOf (petFound) 
+    const petIndex = pets.indexOf(petFound)
 
     //se for encontrado o indice ele entra como nomeFantasiaRequest 
-    
+
     if (petIndex >= 0) {
         petFound.nomeFantasia = nomeFantasiaRequest
 
-    //Apaga a informação anterior e substitui pelo novo nome incluido na request
-    //ordem: encontra o indice de onde alterar, quantas infos serão alteradas, o que entra substituindo
-        pets.splice (petIndex, 1, petFound)
+        //Apaga a informação anterior e substitui pelo novo nome incluido na request
+        //ordem: encontra o indice de onde alterar, quantas infos serão alteradas, o que entra substituindo
+        pets.splice(petIndex, 1, petFound)
 
         // vai escrever no /pets.json no formato de String em Json
         fs.writeFile('.src/models/pets.json', JSON.stringfy(pets), 'utf8', function (err) {
@@ -71,14 +71,17 @@ const updateNome = (req, res) => {
                     message: err
                 })
             } else {
-                console.log ("Nome Fantasia alterado");
+                console.log("Nome Fantasia alterado");
                 //printa o pet que foi atualizado, bate o ID do pets.json com o IdRequest
-                const petUpdated = pets.find (pet => pet.id == idPetRequest)
+                const petUpdated = pets.find(pet => pet.id == idPetRequest)
                 res.status(200).send(petUpdated)
 
-            }})
+            }
+        })
     } else {
-        res.status(404).send({ message: "Petshop não encontrado"})
+        res.status(404).send({
+            message: "Petshop não encontrado"
+        })
     }
 }
 
