@@ -1,5 +1,7 @@
-// Invocando a biblio Express
-const express = require('express')
+
+//executar app
+const app = require('./src/app')
+
 // variável pra guardar a porta
 const PORT = 1313
 
