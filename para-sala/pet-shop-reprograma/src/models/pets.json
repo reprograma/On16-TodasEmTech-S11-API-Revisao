@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "nomeFantasia": "Pet Shop 1",
+        "nomeFantasia": "Pet Shop CatDog",
         "endereco": "Avenida Paulista, 1273 - Sao Paulo",
         "telefone": "11 12345-6789",
         "atende": [
@@ -17,6 +17,25 @@
         "atende": [
             "caes",
             "papagaio"
+        ]
+    },
+    {
+        "id": 3,
+        "nomeFantasia": "Pet Shop 3",
+        "endereco": "Florianópolis - SC",
+        "telefone": "48 3233-2923",
+        "atende": [
+            "caes",
+            "gatos"
+        ]
+    },
+    {
+        "id": 4,
+        "nomeFantasia": "Pet Shop 4",
+        "endereco": "Minha casa",
+        "telefone": "48 99613-3331",
+        "atende": [
+            "caes"
         ]
     }
 ]
