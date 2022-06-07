@@ -47,10 +47,30 @@ const postNewGame = (req, res) => {
 
 }
 
+const updateGameById = (req, res) => {
+
+    try {
+
+        const idRequest = req.params.id
+
+        const gameRequest = req.body
+
+        let foundIndex = games.findIndex(game => game.id == idRequest)
+
+        games.splice(foundIndex, 1, gameRequest)
+
+        res.status(200).send({ message: 'Game updated succesfully', gameRequest})
+
+    } catch(err) {
+        res.status(500).send( {message: 'Internal error'})
+    }
+}
+
 
 
 module.exports = {
     getAllGames,
     getGamesById,
-    postNewGame
+    postNewGame,
+    updateGameById
 }
