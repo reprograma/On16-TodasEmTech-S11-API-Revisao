@@ -19,14 +19,13 @@ const getAll = (request, response) => {
 
 const getOne = (req,res) => {
     let idGameRequest = req.params.id
-    let findGame = games.find(game => game.id == idGameRequest)
-
+    let findGame = games.find((game) => game.id == idGameRequest)
     if (findGame){
-        response.status(200).json([{
+        res.status(200).json([{
             "Game": findGame
         }])
     } else {
-        response.status(500).send({
+        res.status(500).send({
             message: "Erro no server"
         })
     }
@@ -36,6 +35,8 @@ const getOne = (req,res) => {
 
 const postGames = (req, res) => {
     const { title, launchYear, consoles, liked } = req.body
+    const idGameRequest = req.params.id
+
     games.push({ id: games.length + 1, title, launchYear, consoles, liked })
   
     fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) { 
@@ -43,8 +44,7 @@ const postGames = (req, res) => {
           res.status(500).send({ message: err })
       } else {
           console.log("Arquivo atualizado com sucesso!")
-          const gameFound = games.find(game => game.id == id)    
-          res.status(200).send(gameFound)
+          res.status(200).send(games)
       }
   })
   }
