@@ -11,8 +11,8 @@ const router = express.Router()
 router.get("/series", controller.getAllSeries)
 router.get("/series/genero", controller.getGenreSeries)
 router.get("/series/:id", controller.getSerieId)
-router.post("/series", controller.updateNewSerie)
-router.delete("/series/:id", controller.deleteSeries)
+router.post("/series", controller.addSerie)
+router.delete("/series/:id", controller.deleteSerie)
 router.patch("/series/:id/liked", controller.updateLiked)
 
 // Exportar para ser usado no app.js
