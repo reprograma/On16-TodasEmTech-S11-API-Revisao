@@ -1,4 +1,4 @@
-const { response } = require('express')
+const express = require('express')
 const games = require('../models/games.json')
 
 const getAllGames = (req, res) => {
@@ -17,3 +17,4 @@ const getAllGames = (req, res) => {
 module.exports = {
     getAllGames
 }
+
