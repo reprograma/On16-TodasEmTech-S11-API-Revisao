@@ -13,8 +13,8 @@ const app = express()
 app.use(express.json()) 
 
 // para usar, configuro ("seto") uma rota raiz e nela usamos as rotas importadas de seriesRoutes.js
-app.use("/serie", seriesRoutes)
+app.use("/series", seriesRoutes)
 
 
-// exportando para dar acesso
+// exportando para dar acesso lá pro server importar
 module.exports = app
