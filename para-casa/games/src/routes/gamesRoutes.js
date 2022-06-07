@@ -1,0 +1,1 @@
+const games = require('../models/games.json')
