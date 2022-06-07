@@ -66,11 +66,30 @@ const updateGameById = (req, res) => {
     }
 }
 
+const deleteGameById = (req, res) => {
+
+    try {
+
+        const idRequest = req.params.id
+
+        const indexGame = games.findIndex(game => game.id == idRequest)
+
+        games.splice(indexGame, 1)
+
+        res.status(200).send({ message: 'Game deleted succesfully', deleted: idRequest, games })
+
+    } catch(err) {
+        res.status(500).send({ message: 'Internal error'})
+    }
+
+}
+
 
 
 module.exports = {
     getAllGames,
     getGamesById,
     postNewGame,
-    updateGameById
+    updateGameById,
+    deleteGameById
 }
