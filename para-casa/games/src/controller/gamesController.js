@@ -33,11 +33,24 @@ const getGamesById = (req, res) => {
 
 }
 
+const postNewGame = (req, res) => {
+
+    try {
+        const postGame = { id, title, launchYear, consoles, liked } = req.body
+        games.push({ id: games.length + 1, title, launchYear, consoles, liked})
+
+        res.status(201).send({ message: 'New game added', postGame})
+
+    } catch(err) {
+        res.status(500).send({ message: 'Internal error'})
+    }
+
+}
 
 
 
 module.exports = {
     getAllGames,
-    getGamesById
+    getGamesById,
+    postNewGame
 }
-
