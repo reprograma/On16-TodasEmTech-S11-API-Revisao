@@ -23,7 +23,7 @@ router.get('/genero', controller.byGenre)
 router.get('/:id', controller.findId)
 // [POST]  /newserie
 //         cadastrar nova serie
-router.post('/newserie', controller.newSerie)
+router.post('/newserie', controller.addSerie)
 // [DELETE]/series/:id
 //         deletar determinada serie
 router.delete('/delete/:id', controller.deleteSerie)
