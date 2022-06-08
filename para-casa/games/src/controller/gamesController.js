@@ -1,4 +1,3 @@
-const { request, response } = require("express")
 const gamesJson = require("../models/games.json")
 
 const gamesLista = (request, response) => {
@@ -66,9 +65,28 @@ const atualizaJogo = (request, response) => {
     }
 }
 
+const deletaJogo = (request, response) => {
+    try{
+        const idRequest = request.params.id
+        const gameIndex = gamesJson.findIndex(game => game.id == idRequest)
+
+        gamesJson.splice(gameIndex, 1)
+
+        response.status(200).send({
+            message: "Jogo deletado",
+            gamesJson
+        })
+    } catch (err){
+        response.status(400).send({
+            message: "Erro ao deletar Jogo"
+        })
+    }
+}
+
 module.exports ={
     gamesLista,
     buscaJogo,
     cadastraJogo,
-    atualizaJogo
+    atualizaJogo,
+    deletaJogo
 }
