@@ -47,8 +47,28 @@ const cadastraJogo = (request, response) => {
     }
 }
 
+const atualizaJogo = (request, response) => {
+    try{
+        const idRequest = request.params.id
+        let updateRequest = request.body
+
+        let gameFound = gamesJson.findIndex(game => game.id == idRequest)
+        gamesJson.splice(gameFound, 1, updateRequest)
+
+        response.status(201).json({
+            message: "Jogo atualizado",
+            gamesJson
+        })
+    } catch (err) {
+        response.status(500).send({
+            message: "Erro ao atualizar"
+        })
+    }
+}
+
 module.exports ={
     gamesLista,
     buscaJogo,
-    cadastraJogo
+    cadastraJogo,
+    atualizaJogo
 }
