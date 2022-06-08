@@ -23,17 +23,11 @@ const allSeries = (req, res) => {
 const byGenre = (req, res) => {
     // buscando genero para filtrar e deixando em caixa baixa
     let genre = req.query.genre.toLowerCase()
-    // filtrando por genero
-    
-    let serieFiltered = series.filter((serie) => {
-        // preciso passar pelo array para deixar em caixa baixa as strings do json
-    genreLowerCase = serie.genre.map(string => string.toLowerCase())
-    // me de o retorno que inclua a requisição
-        return genreLowerCase.includes(genre)
-    })
+    // filtrando por genero EM CAIXA BAIXA
+    let serieFiltered = series.filter(string => string.genre.toLowerCase().includes(genre))
         
 // se ao filtrar encontrou algum
-  if (serieFiltered.length > -1) {
+  if (serieFiltered.length > 0) {
       //me mostra
     res.status(200).send(serieFiltered)
 // se não
@@ -69,9 +63,8 @@ const addSerie =  (req, res) => {
 
     const {id, name, genre, synopsis, liked, seasons} = req.body
     series.push({id: (series.length + 1), name, genre, synopsis, liked, seasons})
-// configurando fs para que ele guarde as entradas no json
+// configurando fs para que ele guarde as entradas no series.json
     fs.writeFile("../models/series.json", JSON.stringify(series), 'utf8',
-    
     function (err) {
         // se der erro
         if(err) {
@@ -87,6 +80,12 @@ const addSerie =  (req, res) => {
             res.status(200).send(serieFound)
         }
     })
+    // res.status(201).json([
+    //     {
+    //       message: "cadastro de nova serie realizada com sucesso", 
+    //       series
+    //     },
+    //   ])
     
 }
 
