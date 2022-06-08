@@ -12,6 +12,20 @@ const gamesLista = (request, response) => {
     }
 }
 
+const buscaJogo = (request, response) => {
+    const idRequest = request.params.id
+    const gameFound = gamesJson.find(game => game.id == idRequest)
+
+    if(gameFound) {
+        response.status(200).send(gameFound)
+    } else {
+        response.status(404).send({
+            message: "Jogo não encontrado"
+        })
+    }
+}
+
 module.exports ={
-    gamesLista
+    gamesLista,
+    buscaJogo
 }
