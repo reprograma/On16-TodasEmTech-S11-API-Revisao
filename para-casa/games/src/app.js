@@ -2,7 +2,7 @@
 const express = require('express')
 
 //importando a continuação das rotas
-const petRoutes = require('./router/gamesRoutes')
+const gamesRoutes = require('./router/gamesRoutes')
 
 //executar o expess
 const app = express()
@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 
 // criando uma rota raíz
-app.use('/games', petRoutes)
+app.use('/games', gamesRoutes)
 
 // exportar para usar o server.js
 module.exports = app
