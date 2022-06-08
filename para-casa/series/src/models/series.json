@@ -59,7 +59,7 @@
     {
         "id": 2,
         "name": "The Office",
-        "genre": "Comédia",
+        "genre": "Comedia",
         "synopsis": "Pessoas sem nocao trabalhando com outras pessoas sem nocao num escritorio com um chefe sem nocao",
         "liked": true,
         "seasons": [
