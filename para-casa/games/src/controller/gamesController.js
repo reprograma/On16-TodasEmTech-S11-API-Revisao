@@ -84,12 +84,34 @@ const deleteGameById = (req, res) => {
 
 }
 
+const updateLike = (req, res) => {
 
+    const idRequest = req.params.id
+    const likedRequest = req.body.liked
+
+    const gameFound = games.find(game => game.id == idRequest)
+    const gameIndex = games.indexOf(gameFound)
+
+    if (gameIndex >= 0) {
+
+        gameFound.liked = likedRequest
+        games.splice(gameIndex, 1, gameFound)
+
+        res.status(200).send({ message: 'Updated like', games })
+        
+    } else {
+
+        res.status(500).send({ message: 'Internal error' })
+    }
+}
+
+    
 
 module.exports = {
     getAllGames,
     getGamesById,
     postNewGame,
     updateGameById,
-    deleteGameById
+    deleteGameById,
+    updateLike
 }
