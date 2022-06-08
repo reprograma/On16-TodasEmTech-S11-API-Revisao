@@ -9,11 +9,11 @@ router.get("/catalogo/:id", controller.getById)
  
 router.post("/cadastrar", controller.postGames)
  
-//router.put("/update/:id", controller.updateGame)
+router.put("/update/:id", controller.gameUpdate)
  
 router.delete("/delete/:id", controller.deleteGame)
  
-//router.patch("/atualizar/:id/liked",controller.atualizarLikedGame)
+router.patch("/atualizar/liked/:id",controller.atualizarLikedGame)
  
  
 module.exports = router
