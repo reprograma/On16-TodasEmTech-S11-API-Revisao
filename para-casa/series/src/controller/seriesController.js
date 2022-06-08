@@ -32,7 +32,7 @@ const newEp = (req, res) => {
         watched: watched
        }
     ]
-    
+
     fs.writeFile("./src/models/series.json", JSON.stringify(series), 'utf8', function (err) {
         if (err) {
             res.status(500).send({ message: err })
@@ -42,19 +42,35 @@ const newEp = (req, res) => {
             res.status(200).send(serieUpdated)
         } 
     })
+}
 
-    // fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) { 
-    //     if (err) {
-    //         res.status(500).send({ message: err })
-    //     } else {
-    //         console.log("Arquivo atualizado com sucesso!")
-    //         res.status(200).send(games)
-    //     }
-    // })
+const newSeason = (req, res) => {
+    const idRequest = req.params.id;
+    const { code, episodes } = req.body
+    const findId = series.find(find => find.id == idRequest)
+    console.log(findId)
+    findId.seasons = [
+        ...findId.seasons,
+        {
+            id: (findId.seasons).length + 1,
+            code: code,
+            episodes: episodes
+        }
+    ]
+    fs.writeFile("./src/models/series.json", JSON.stringify(series), 'utf8', function (err) {
+        if (err) {
+            res.status(500).send({ message: err })
+        } else {
+            console.log("Temporada adicionada!");
+            const serieUpdated = series.find((serie) => serie.id == idRequest)
+            res.status(200).send(serieUpdated)
+        } 
+    })
 }
 
 
 module.exports = {
     getAll,
-    newEp
+    newEp,
+    newSeason
 }

@@ -81,6 +81,13 @@
             "watched": false
           }
         ]
+      },
+      {
+        "id": 3,
+        "code": "season10",
+        "episodes": [
+          { "id": 11, "code": "ep11", "name": "Episódio 11", "watched": true }
+        ]
       }
     ]
   }
