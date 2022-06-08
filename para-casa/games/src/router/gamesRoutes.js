@@ -9,6 +9,6 @@ router.get('/:id', controller.getGamesById)
 router.post('/register', controller.postNewGame)
 router.put('/update/:id', controller.updateGameById)
 router.delete('/delete/:id', controller.deleteGameById)
-
+router.patch('/:id/liked', controller.updateLike)
 
 module.exports = router
