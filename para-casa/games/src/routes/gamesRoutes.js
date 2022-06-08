@@ -6,5 +6,6 @@ router.get("/lista", controller.gamesLista)
 router.get("/buscarjogo/:id", controller.buscaJogo)
 router.post("/cadastrar", controller.cadastraJogo)
 router.put("/atualizar/:id", controller.atualizaJogo)
+router.delete("/deletar/:id", controller.deletaJogo)
 
 module.exports = router
