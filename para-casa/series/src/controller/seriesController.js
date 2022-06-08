@@ -63,34 +63,57 @@ const addSerie =  (req, res) => {
 
     const {id, name, genre, synopsis, liked, seasons} = req.body
     series.push({id: (series.length + 1), name, genre, synopsis, liked, seasons})
-// configurando fs para que ele guarde as entradas no series.json
-    fs.writeFile("../models/series.json", JSON.stringify(series), 'utf8',
-    function (err) {
-        // se der erro
-        if(err) {
-            res.status(500).send({message: err})
-        }
-        // se deu certo, 
-         else {
-            // dá um alo
-            console.log("seu catálogo de séries foi atualizado")
-            // encntra o objeto pelo id
-            const serieFound = series.find((s) => s.id == id)
-            // e me mostra o que encontraste
-            res.status(200).send(serieFound)
-        }
-    })
-    // res.status(201).json([
-    //     {
-    //       message: "cadastro de nova serie realizada com sucesso", 
-    //       series
-    //     },
-    //   ])
+
+// tentei fazer assim, mas por algum motivo deu erros pra sempre no path, conferi mil vezes. nao vai. 
+// entao comenteipra mais tarde ver
+    // fs.writeFile("../models/series.json", JSON.stringify(series), 'utf8',
+    // function (err) {
+    //     // se der erro
+    //     if(err) {
+    //         res.status(500).send({message: err})
+    //     }
+    //     // se deu certo, 
+    //      else {
+    //         // dá um salve
+    //         console.log("seu catálogo de séries foi atualizado")
+    //         // encntra o objeto pelo id
+    //         const serieFound = series.find((s) => s.id == id)
+    //         // e me mostra o que encontraste
+    //         res.status(200).send(serieFound)
+    //     }
+    // })
+    res.status(201).json([
+        {
+          message: "cadastro de nova serie realizada com sucesso", 
+          series
+        },
+      ])
     
 }
 
 const deleteSerie =  (req, res) => {
-    
+    // acho a série pelo ID para deletar
+    let serieId = req.params.id
+    let sfound = series.find((s) => s.id == serieId)
+
+    // encontro e tira uma da lista
+  series.splice(sfound, 1);
+  // se achar e deletar, missão cumprida
+  if (sfound) {
+    res.status(200).json([
+      {
+        message: "Série excluida", serieId,
+        series,
+      },
+    ]);
+    // ai poxa, essa não tem
+  } else {
+    res.status(404).send([
+      {
+        message: "Série não encontrada",
+      },
+    ]);
+  }
 }
 
 const likeSerie =  (req, res) => {
