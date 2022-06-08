@@ -2,6 +2,9 @@
 
 const pets = require('../models/pets.json')
 const fs = require('fs')
+const {
+    request
+} = require('http')
 
 const postPet = (req, res) => {
     const {
@@ -61,14 +64,106 @@ const updateName = (req, res) => {
         })
 
     } else {
-        res.status(404).send({message: "Não encontramos esse petshop, é necessário cadastra-lo"})
+        res.status(404).send({
+            message: "Não encontramos esse petshop, é necessário cadastra-lo"
+        })
     }
 }
 
+const getAllpets = (req, res) => {
+    try {
+        res.status(200).json([{
+            "Petshops": pets
+        }])
+    } catch (err) {
+        res.status(500).send({
+            "message": "Erro no servidor"
+        })
+    }
+}
 
+const getPetsId = (req, res) => {
+    const idRequest = req.params.id
+    let petFound = pets.filter(pets => pets.id == idRequest)
+    if (petFound.length > 0) {
+        res.status(200).send(petFound)
+    } else {
+        res.status(404).send([{
+            "message": "Petshop não encontrado"
+        }])
+    }
+}
 
+const getPetsAtende = (req, res) => {
+    const atendimentoRequest = req.query.atende
+    let atendeFilter = pets.filter(pets => pets.atende.includes(atendimentoRequest))
+    if (atendeFilter.length >= 0) {
+        res.status(200).send(atendeFilter)
+    } else {
+        res.status(404).send([{
+            "message": "Petshop não encontrado"
+        }])
+    }
+}
+
+const getPetsEndereco = (req, res) => {
+    const enderecoRequest = req.query.endereco
+    let enderecoFilter = pets.filter(pets => pets.endereco.includes(enderecoRequest))
+    if (enderecoFilter.length >= 0) {
+        res.status(200).send(enderecoFilter)
+    } else {
+        res.status(404).send([{
+            "message": "Petshop não encontrado"
+        }])
+    }
+}
+
+const updateAllDatas = (req, res) => {
+    try {
+        const idRequest = req.params.id
+        const petRequest = req.body
+
+        let indexEncontrado = pets.findIndex(pets => pets.id == idRequest)
+
+        pets.splice(indexEncontrado, 1, petRequest)
+        res.status(200).json([{
+            "message": "Petshop atualizado com sucesso!",
+            pets
+        }])
+    } catch (err) {
+        console.log(err)
+        res.status(500).send([{
+            "message": "Erro interno ao atualizar dados"
+        }])
+    }
+}
+
+const deletePets = (req, res) => {
+    try {
+        const idRequest = req.params.id
+        const indicePets = pets.findIndex(pets => pets.id == idRequest)
+
+        pets.splice(indicePets, 1)
+        res.status(200).json([{
+            "message": "Petshop deletado com sucesso!",
+            "deletado": idRequest,
+            pets
+        }])
+    } catch (err) {
+        console.log(err)
+        res.status(404).send([{
+            "message": "Erro interno ao deletar"
+        }])
+    }
+}
 
 module.exports = {
     postPet,
-    updateName
+    updateName,
+    getAllpets,
+    getPetsId,
+    getPetsAtende,
+    getPetsEndereco,
+    updateAllDatas,
+    deletePets
 }
