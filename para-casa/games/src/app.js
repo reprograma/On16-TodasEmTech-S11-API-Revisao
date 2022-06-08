@@ -1,6 +1,6 @@
 const express = require('express')
 
-const app = express
+const app = express()
 
 const gamesRoutes = require('./routes/gamesRoutes')
 
