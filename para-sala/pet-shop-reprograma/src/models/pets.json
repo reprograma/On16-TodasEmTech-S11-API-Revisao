@@ -1,16 +1,90 @@
 [
   {
-    "id": 1,
-    "nomeFantasia": "Pet Shop 4",
-    "endereco": "Recife, 1273 - Pernambuco",
-    "telefone": "11 98765-43214",
-    "atende": ["caes", "papagaio"]
+  "id": 1,
+  "nomeFantasia": "petShop Cao Feliz",
+  "endereco": "Avenida Paulista, 1273",
+  "estado": "Sao Paulo",
+  "telefone": "11 12345-6789",
+  "atende": [
+  "caes",
+  "gatos"
+  ]
   },
   {
-    "id": 2,
-    "nomeFantasia": "Pet Shop 111111",
-    "endereco": "Recife, 1273 - Pernambuco",
-    "telefone": "11 98765-4321",
-    "atende": ["caes", "papagaio"]
+  "id": 2,
+  "nomeFantasia": "petShop Babinho",
+  "endereco": "Recife, 1273",
+  "estado": "Pernambuco",
+  "telefone": "81 98765-4321",
+  "atende": [
+  "caes",
+  "papagaio"
+  ]
+  },
+  {
+  "id": 3,
+  "nomeFantasia": "petShop Dogao",
+  "endereco": "Rua dos milagres, 874",
+  "estado": "Paraiba",
+  "telefone": "83 987554412",
+  "atende": "[caracol, fadinhas]"
+  },
+  {
+  "id": 4,
+  "nomeFantasia": "petShop Aleria",
+  "endereco": "Avenida Paulo Gustavo, 1120",
+  "estado": "Rio de Janeiro",
+  "telefone": "21 99876654",
+  "atende": [
+  "pássaros",
+  "gatos"
+  ]
+  },
+  {
+  "id": 5,
+  "nomeFantasia": "petShop Felicidade Constante",
+  "endereco": "Avenida Rio da vida, 453",
+  "estado": "Ceara",
+  "atende": [
+  "caes",
+  "gatos"
+  ]
+  },
+  {
+  "id": 6,
+  "nomeFantasia": "petShop Simplesmente amor",
+  "endereco": "Avenida Luis Santos, 880",
+  "estado": "Alagoas",
+  "telefone": "82 32267890",
+  "atende": [
+  "caes",
+  "gatos",
+  "hamsters"
+  ]
+  },
+  {
+  "id": 7,
+  "nomeFantasia": "petShop CaoQRi",
+  "endereco": "Avenida Epitacio Pessoa, 547",
+  "estado": "Paraiba",
+  "telefone": "83 32254789",
+  "atende": [
+  "caes",
+  "gatos",
+  "carneiros"
+  ]
+  },
+  {
+  "id": 8,
+  "nomeFantasia": "petShop Casa dos Criadores",
+  "endereco": "Avenida Amazonas, 721",
+  "estado": "Amazonas",
+  "telefone": "92 3457889",
+  "atende": [
+  "caes",
+  "gatos",
+  "papagaio",
+  "bodes"
+  ]
   }
-]
+  ]
