@@ -27,7 +27,7 @@ const getById = (req, res) => {
 
 const postGames = (req, res) => {
     const { id, title, launchYear, consoles, liked } = req.body
-
+     //push inclui algo no final do array
     games.push({ id: (games.length + 1), title, launchYear, consoles, liked })
 
     fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) {
@@ -35,9 +35,9 @@ const postGames = (req, res) => {
             res.status(500).send({ message: err })
 
         } else {
-            console.log("Game atualizado com sucesso")
+            console.log("Game criado com sucesso")
             const gameFound = games.find(game => game.id == id)
-            res.status(200).send(gameFound)
+            res.status(201).send(gameFound)
         }
     })
 
@@ -46,38 +46,26 @@ const postGames = (req, res) => {
 
 }
 
-//put aqui PROBLEMA
+//put aqui 
 const gameUpdate = (req, res) => {
-   try {
-       const gameId = req.params.id
-       const gameUpdate = req.body
-
-       const gameFound = games.find(games => games.id === gameId)
-       const gameIndex = games.indexOf(gameFound)
-
-       if (gameIndex >= 0) {
-
-        games.splice(gameIndex, 1,gameUpdate)
-
-        fs.writeFile("./src/models/games.json", 
-        JSON.stringify(games),'utf8', function (err){
-            if (err){
-                res.status(500).send({message:"erro no server"})
-            } else {
-
-                console.log("Game atualizado com sucesso")
-                const gameUpdated = games.find(game => game.id == gameId)
-
-                res.status(200).send(gameUpdated)
-            }
-        })
-
-        }else{
-            res.status(404).send({message: "Game não encontrado"})
-        }
-    } catch (err) {
-       res.status(500).send({message:err})
-   }
+    const idGame = req.params.id
+    const gameUpdated = req.body
+ 
+    const positionGames = games.findIndex(game => {
+       return game.id == idGame
+    })
+    if(gameUpdated) {
+        games.splice(positionGames, 1, gameUpdated)
+       
+        res.status(200).json([{
+            gameUpdated,
+            "mensagem": "Game atualizado com sucesso"
+        }])
+    } else {
+        res.status(404).send({message: "Game não encontrado para atualizar."})
+    }
+   
+  
 }
 
 
