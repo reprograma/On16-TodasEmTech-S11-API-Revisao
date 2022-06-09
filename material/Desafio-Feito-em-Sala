@@ -1,0 +1,42 @@
+//instala as dependencias na mesma pasta que tás o package.json
+
+//// desafio 
+
+const addEpisode = (req, res) => {
+  try {
+    const serieId = req.params.id // guardar o id passado na request
+    const serieToUpdate = series.find((serie) => serie.id == serieId) // procurar no array esse id que foi passado
+
+    // verifique se a serie existe
+    if (serieToUpdate) {
+      const seasonId = req.params.seasonId //guarda o id da serie q a gata passou no request
+      const seasonToUpdate = serieToUpdate.seasons.find(
+        (season) => season.id == seasonId,
+      ) // procura esse id no array de seasons no id de series informado
+      // verificando se a temporada existe no array de series
+      if (seasonToUpdate) {
+        const { code, name, watched } = req.body
+        seasonToUpdate.episodes.push({
+          id: seasonToUpdate.episodes.length + 1,
+          code,
+          name,
+          watched,
+        }) // adicionamos o novo episodio a temporada
+
+        console.log('FUNCIONOUUUUU')
+
+        const serieUpdated = series.find((serie) => serie.id == serieId)
+        res.status(201).send(serieUpdated)
+      } else {
+        res.status(404).send({ message: 'encontrei essa temporada nao visse' })
+      }
+    } else {
+      res.status(404).send({ message: 'encontrei essa serie nao visse' })
+    }
+  } catch (err) {
+    res.status(500).send({ message: 'ainda ta dando erro gataannn e eh do teu lado' })
+  }
+}
+
+//router.post("/:id/season/:seasonId/episode", controller.addEpisode)
+//rota
