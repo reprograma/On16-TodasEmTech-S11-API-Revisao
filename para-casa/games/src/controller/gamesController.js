@@ -26,6 +26,32 @@ const getById = (req, res) => {
     }
 }
 
+const addNewGame = (req, res) => {
+    const {id, title, launchYear, consoles, liked} = req.body;
+    games.push
+    ({
+    id: games.length +1,
+    title,
+    launchYear,
+    consoles, 
+    liked,})
+    fs.writeFile(
+        "./src/models/pets.json",
+        JSON.stringify(games),
+        utf8,
+        function(err) {
+            if (err) {
+                res.status(500).send({ message: err });
+              } else {
+                console.log("File created successfully");
+                const gameFound = games.find((game) => game.id == id);
+                res.status(201).send(gameFound);
+              }
+        }
+    )
+    res.status(200).send({ message: "Game added successfully"})
+}
+
 
 
 
@@ -37,5 +63,8 @@ const getById = (req, res) => {
 
 module.exports = {
     getAllGames,
+    getById,
+    addNewGame,
+
 
 }
