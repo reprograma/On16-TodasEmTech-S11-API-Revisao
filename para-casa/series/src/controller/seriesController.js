@@ -89,11 +89,33 @@ const deleteSerieById = (req, res) => {
 
 }
 
+const updateLike = (req, res) => {
+
+    const idRequest = req.params.id
+    const likedRequest = req.body.liked
+
+    const serieFound = series.find(serie => serie.id == idRequest)
+    const serieIndex = series.indexOf(serieFound)
+
+    if (serieIndex >= 0) {
+
+        serieFound.liked = likedRequest
+        series.splice(serieIndex, 1, serieFound)
+
+        res.status(200).send({ message: 'Updated like', series })
+        
+    } else {
+
+        res.status(500).send({ message: 'Internal error' })
+    }
+}
+
 
 module.exports = {
     getAllSeries,
     getByGenre,
     getSeriesById,
     postNewSerie,
-    deleteSerieById
+    deleteSerieById,
+    updateLike
 }
