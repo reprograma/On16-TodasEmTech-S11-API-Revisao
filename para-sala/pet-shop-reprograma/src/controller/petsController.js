@@ -1,6 +1,5 @@
 const pets = require('../models/pets.json')
 const fs = require('fs') //importado no controller
-const { response } = require('../app')
 
 const postNewPetShop = (req, res) => {
 
@@ -60,7 +59,113 @@ const updateNameById = (req, res) => {
 
 }
 
+const getAllPetShops = (req, res) => {
+
+    try {
+        res.status(200).send({ 'PetShops:': pets})
+
+    }catch(err) {
+        res.status(500).send({ message: 'Internal error'})
+    }
+}
+
+const getPetShopsById = (req, res) => {
+
+    try {
+
+        const idRequest = req.params.id 
+
+        const petIdFilter = pets.filter(pet => pet.id == idRequest)
+
+        if (petIdFilter.length > 0) {
+            
+            res.status(200).send(petIdFilter)
+
+        } else {
+            res.status(404).send({ message: 'Not found'})
+        }
+
+    }catch(err) {
+
+        res.status(500).send({ message: 'Internal error'})
+    }
+}
+
+const getPetShopsByAtende = (req, res) => {
+
+    let atendeRequest = req.query.atende
+
+    let petsFilter = pets.filter(pet => pet.atende.includes(atendeRequest))
+
+    if (petsFilter.length > 0) {
+        res.status(200).send(petsFilter)
+
+    } else {
+        res.status(404).send({ message: "Establishment not found" })
+    }
+} // verificar pq não está rodando no postman
+
+
+const getPetShopsbyState = (req, res) => {
+
+    const stateRequest = req.query.endereco
+
+    const petsFilter = pets.filter(pet => pet.endereco.includes(stateRequest))
+
+    if (petsFilter.length > 0) {
+
+        res.status(200).send(petsFilter)
+
+    } else {
+
+        res.status(404).send({ message: 'State not found'})
+    }
+} // verificar pq não está rodando no postman
+
+
+const updatePetShop = (req, res) => {
+
+    try {
+
+        const idRequest = req.params.id 
+        
+        const petShopRequest = req.body
+
+        let foundIndex = pets.findIndex(pet => pet.id == idRequest)
+
+        pets.splice(foundIndex, 1, petShopRequest)
+
+        res.status(200).send({ message: 'PetShop updated', petShopRequest})
+
+    } catch(err) {
+
+        res.status(500).send({ message: 'Internal error'})
+    }
+}
+
+const deletePetShop = (req, res) => {
+
+    try {
+
+        const idRequest = req.params.id
+
+        let petShopIndex = pets.findIndex(pet => pet.id == idRequest)
+
+        pets.splice(petShopIndex, 1)
+
+        res.status(200).send({ message: 'PetShop deleted', petShopIndex})
+
+    } catch(err) {res.status(500).send({message: 'Internal error'})}
+}
+
+
 module.exports = {
     postNewPetShop,
-    updateNameById
+    updateNameById,
+    getAllPetShops,
+    getPetShopsById,
+    getPetShopsByAtende,
+    getPetShopsbyState,
+    updatePetShop,
+    deletePetShop
 }
