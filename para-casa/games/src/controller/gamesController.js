@@ -36,7 +36,7 @@ const addNewGame = (req, res) => {
     consoles, 
     liked,})
     fs.writeFile(
-        "./src/models/pets.json",
+        "./src/models/games.json",
         JSON.stringify(games),
         utf8,
         function(err) {
@@ -45,12 +45,44 @@ const addNewGame = (req, res) => {
               } else {
                 console.log("File created successfully");
                 const gameFound = games.find((game) => game.id == id);
-                res.status(201).send(gameFound);
+                res.status(200).send(gameFound);
               }
         }
     )
-    res.status(200).send({ message: "Game added successfully"})
+    res.status(201).send({ message: "Game added successfully"})
 }
+
+const updateGame = (req, res) => {
+    let idReq = req.params.id;
+    let gameReq = req.body;
+
+    const gameFound = games.find((game) => game.id == idReq)
+    const gameIndex = games.indexOf(gameFound);
+
+    if (gameIndex != -1) {
+        gameFound.body = gameReq
+        games.slice(gameIndex, 1, gameReq)
+        fs.writeFile(
+        "./src/models/games.json",
+        JSON.stringify(games),
+        utf8,
+        function(err) {
+            if (err) {
+                res.status(500).send({ message: err });
+                } else {
+                console.log("File updated successfully");
+                const gameFound = games.find((game) => game.id == id);
+                res.status(200).send(gameFound);
+                  }
+            }
+        )
+        res.status(200).json({
+            message: "Game updated successfully",
+            games,
+        })
+    }
+}
+
 
 
 
@@ -65,6 +97,7 @@ module.exports = {
     getAllGames,
     getById,
     addNewGame,
+    updateGame,
 
 
 }
