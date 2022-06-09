@@ -71,10 +71,29 @@ const postNewSerie = (req, res) => {
 }
 
 
+const deleteSerieById = (req, res) => {
+
+    try {
+
+        const idRequest = req.params.id
+
+        const indexSerie = series.findIndex(serie => serie.id == idRequest)
+
+        series.splice(indexSerie, 1)
+
+        res.status(200).send({ message: 'Serie deleted succesfully', deleted: idRequest, series })
+
+    } catch(err) {
+        res.status(500).send({ message: 'Internal error'})
+    }
+
+}
+
 
 module.exports = {
     getAllSeries,
     getByGenre,
     getSeriesById,
-    postNewSerie
+    postNewSerie,
+    deleteSerieById
 }
