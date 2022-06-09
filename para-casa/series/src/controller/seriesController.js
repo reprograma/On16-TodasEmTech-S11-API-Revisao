@@ -46,32 +46,52 @@ const getById = (request, response) => {
     }
 }
 
-// //Cadastra nova música (post)
-// const createMusic = (request, response) => {
-//     try{
-//        let titleRequest = request.body.title
-//        let launchYearRequest = request.body.launchYear
-//        let favoritedRequest = request.body.favorited
-//        let artistsRequest = request.body.artists
+// //Cadastra nova série (post)
+const createSerie = (request, response) => {
+    try{
+       let nameRequest = request.body.name
+       let genreRequest = request.body.genre
+       let synopsisRequest = request.body.synopsis
+       let likedRequest = request.body.liked
 
-//        let novaMusica = {
-//            id : Math.floor(Date.now() * Math.random()).toString(36),
-//            title: titleRequest,
-//            launchYear : launchYearRequest,
-//            favorited : favoritedRequest,
-//            artists : artistsRequest,
-//        }
+       let novaSerie = {
+           id : Math.floor(Date.now() * Math.random()).toString(36),
+           name: nameRequest,
+           genre : genreRequest,
+           synopsis : synopsisRequest,
+           liked : likedRequest,
+       }
 
-//        musicas.push(novaMusica)
+       series.push(novaSerie)
 
-//        response.status(201).json([{
-//            mensagem: 'Música cadastrada com sucesso', novaMusica,
-//        },
-//     ])
-//     } catch (err) {
-//         response.status(500).send({mensagem: 'Erro ao cadastrar'})
-//     }
-// }
+       response.status(201).json([{
+           mensagem: 'Série cadastrada com sucesso', novaSerie,
+       },
+    ])
+    } catch (err) {
+        response.status(500).send({mensagem: 'Erro ao cadastrar'})
+    }
+}
+
+// deleta uma série pelo id (delete)
+const deleteById = (request, response) => {
+    const idRequest = request.params.id
+    let serieId = series.findIndex(series => series.id == idRequest)
+    idDeletado = series.filter(series => series.id == idRequest)
+
+    series.splice(serieId, 1)
+
+    if (serieId > -1) {
+        response.status(200).json([{
+            "mensagem": "Série deletada com sucesso",
+            idDeletado,
+            series
+        },
+    ])
+    }else {
+        response.status(404).send([{ mensagem: "A série não foi deletada"}])
+    }
+}
 
 // //Atualiza favoritos (patch)
 // const updateFavorited = (request, response) => {
@@ -101,25 +121,7 @@ const getById = (request, response) => {
 //     }
 // }
 
-// //deleta música pelo id (delete)
-// const deleteById = (request, response) => {
-//     const idRequest = request.params.id
-//     let musicId = musicas.findIndex((musicas) => musicas.id == idRequest)
-//     idDeletado = musicas.filter(musicas => musicas.id == idRequest)
 
-//     musicas.splice(musicId, 1)
-
-//     if (musicId > -1) {
-//         response.status(200).json([{
-//             "mensagem": "música deletada",
-//             idDeletado,
-//             musicas
-//         },
-//     ])
-//     }else {
-//         response.status(404).send([{ mensagem: "A música não foi deletada"}])
-//     }
-// }
 
 // //Atualiza a música pelo id (put)
 // const updateById = (request, response) => {
@@ -156,5 +158,7 @@ const getById = (request, response) => {
 module.exports = {
     getAllSeries,
     getByGenre,
-    getById
+    getById,
+    createSerie,
+    deleteById
 } 
