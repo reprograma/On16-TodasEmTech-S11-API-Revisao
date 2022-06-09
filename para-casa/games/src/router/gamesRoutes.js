@@ -12,14 +12,14 @@ const controller = require('../controller/gamesController')
 //retorna todos os jogos da lista Json
 router.get('/games', controller.getGames)
 
-// //retorna apenas um jogo da lista
+// //retorna apenas um jogo da lista buscando pelo ID
 router.get('/games/:id', controller.getGamesId)
 
 // //cadastrar novo jogo
 router.post('/games', controller.addGames)
 
-// //deletar um jogo especifico 
-// router.delete('/games/:id', controller.deleteGames)
+// //deletar um jogo especifico pelo ID
+router.delete('/games/:id', controller.deleteGames)
 
 // //atualizar avaliação do jogo, campo "liked" da lista Json
 // router.patch('/games/:id/liked', controller.updateGames)
