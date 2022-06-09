@@ -1,22 +1,28 @@
-
-   
-const express = require("express")
+const express = require ('express')
 const router = express.Router()
-const controller = require("../controller/petsController")
 
-// post - criacao
-router.post("/", controller.createPet)
+const controller = require('../controller/petsController')
 
-// delete - remoção
-router.delete("/:id", controller.deletePet)
+router.get('/catalogo', controller.getAllPets)
 
-// put e patch - alteração
-router.put("/:id", controller.updatePet)
-router.patch("/:id/name", controller.updateName)
+router.get('/catalogo/:id',controller.getPetsId)
 
-// get - recuperação
-router.get("/", controller.getAllPets)
-router.get("/atende", controller.getPetByAtendende)
-router.get("/:id", controller.getPet)
+router.get('/buscar/atende', controller.getByAtendimento)
 
-module.exports = router;
+router.get('/listar/estado', controller.getByEstado)
+
+router.post('/adicionar', controller.postPet)
+
+router.patch('/name/:id', controller.updateName)
+
+router.put('/atualizar/:id', controller.atualizarPets)
+
+router.delete('/deletar/:id', controller.petDelete)
+
+
+
+
+
+
+module.exports = router
+   

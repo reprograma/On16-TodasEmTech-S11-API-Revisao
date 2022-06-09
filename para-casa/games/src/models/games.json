@@ -6,7 +6,7 @@
         "consoles": [
             "ps4"
         ],
-        "liked": true
+        "liked": "false"
     },
     {
         "id": 2,
@@ -26,6 +26,15 @@
         "consoles": [
             "nintendo64",
             "nintendoSwitch"
+        ],
+        "liked": true
+    },
+    {
+        "id": 4,
+        "title": "The sims",
+        "launchYear": "2005",
+        "consoles": [
+            "ps4"
         ],
         "liked": true
     }
