@@ -73,7 +73,7 @@ const updateName = (req, res) => {
     let = idPetRequest = req.params.id
     let = nomeFantasiaRequest = req.body.nomeFantasia
     const petFound = pets.find(pet => pet.id == idPetRequest)
-    //encontrando o pet
+    //encontrando o pet pelo index
     const petIndex = pets.indexOf(petFound)
     if (petIndex >= 0) {
         petFound.nomeFantasia = nomeFantasiaRequest
@@ -111,6 +111,31 @@ const atualizarPets = (req, res) => {
     }])
 }
 
+const petDelete = (req, res) => {
+    try {
+        const idPet = req.params.id
+        const petFound = pets.find(pet => pet.id == idPet) 
+        const petIndex = pets.indexOf(petFound) 
+ 
+        if (petIndex >= 0) { 
+            pets.splice(petIndex, 1) 
+            res.status(200).json([{
+                "message": "Pet deletado com sucesso!",
+                "deletado": idPet,
+                pets
+            }])
+            
+        } else {
+            res.status(404).send({ message: "Petshop não encontrado logo não pode ser deletado" })
+        }
+ 
+    } catch (err) {
+        console.log(err)
+        res.status(500).send({ message: "Erro ao deletar o Petshop" })
+    }
+}
+
+
 
 
 module.exports = {
@@ -120,5 +145,6 @@ module.exports = {
     getByEstado,
     postPet,
     updateName,
-    atualizarPets
+    atualizarPets,
+    petDelete
 }
