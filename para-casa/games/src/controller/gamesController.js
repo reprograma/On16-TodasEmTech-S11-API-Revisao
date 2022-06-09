@@ -12,7 +12,7 @@ const getAllGames = (req, res) => {
           message: "Internal Server Error",
         });
       }
-    };
+};
 
 const getById = (req, res) => {
     const gamesReq = req.params.id
@@ -38,7 +38,7 @@ const addNewGame = (req, res) => {
     fs.writeFile(
         "./src/models/games.json",
         JSON.stringify(games),
-        utf8,
+        "utf8",
         function(err) {
             if (err) {
                 res.status(500).send({ message: err });
@@ -53,51 +53,71 @@ const addNewGame = (req, res) => {
 }
 
 const updateGame = (req, res) => {
-    let idReq = req.params.id;
-    let gameReq = req.body;
+  let idReq = req.params.id;
+  let gameReq = req.body;
 
-    const gameFound = games.find((game) => game.id == idReq)
-    const gameIndex = games.indexOf(gameFound);
+  const gameFound = games.find((game) => game.id == idReq);
+  const gameIndex = games.indexOf(gameFound);
 
-    if (gameIndex != -1) {
-        gameFound.body = gameReq
-        games.slice(gameIndex, 1, gameReq)
-        fs.writeFile(
-        "./src/models/games.json",
-        JSON.stringify(games),
-        utf8,
-        function(err) {
-            if (err) {
-                res.status(500).send({ message: err });
-                } else {
-                console.log("File updated successfully");
-                const gameFound = games.find((game) => game.id == id);
-                res.status(200).send(gameFound);
-                  }
-            }
-        )
-        res.status(200).json({
-            message: "Game updated successfully",
-            games,
-        })
-    }
-}
+  if (gameIndex != -1) {
+    gameFound.body = gameReq;
+    games.slice(gameIndex, 1, gameReq);
+    fs.writeFile(
+      "./src/models/games.json",
+      JSON.stringify(games),
+      "utf8",
+      function (err) {
+        if (err) {
+          res.status(500).send({ message: err });
+        } else {
+          console.log("File updated successfully");
+          const gameFound = games.find((game) => game.id == id);
+          res.status(200).send(gameFound);
+        }
+      }
+    );
+    res.status(200).json({
+      message: "Game updated successfully",
+      games,
+    });
+  }
+};
 
+const deleteGame = (req, res) => {
+  const idReq = req.params.id;
+  const gameIndex = games.findIndex((game) => game.id == idReq);
 
+  games.splice(gameIndex, 1);
 
-
-
-
-
-
-
-
+  if (gameIndex != -1) {
+    fs.writeFile(
+      "./src/models/games.json",
+      JSON.stringify(games),
+      "utf8",
+      function (err) {
+        if (err) {
+          res.status(500).send({ message: "internal error server" });
+        } else {
+          console.log("File deleted successfully");
+        }
+      }
+    );
+    res.status(200).json({
+      message: "Game deleted successfully",
+      "deleted game": idReq,
+      games,
+    });
+  } else {
+    res.status(404).json({
+        message: "Game not found"
+      });
+  }
+};
 
 module.exports = {
     getAllGames,
     getById,
     addNewGame,
     updateGame,
-
-
+    deleteGame,
 }

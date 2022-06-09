@@ -6,6 +6,6 @@ app.use(express.json());
 
 const gamesRoute = require('./router/gamesRoutes')
 
-app.use("/gamestore", gamesRoute);
+app.use("/gameStore", gamesRoute);
 
 module.exports = app;
