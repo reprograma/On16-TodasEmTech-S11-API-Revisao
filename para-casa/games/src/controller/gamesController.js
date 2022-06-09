@@ -14,7 +14,17 @@ const getAllGames = (req, res) => {
       }
     };
 
-const getById = (req, res) =
+const getById = (req, res) => {
+    const gamesReq = req.params.id
+    const gamesFilter = games.filter((games) => games.id == gamesReq);
+    if (gamesFilter.length > 0) {
+      res.status(200).send(gamesFilter);
+    } else {
+      res.status(404).send({
+        message: "Not Found",
+      });
+    }
+}
 
 
 
