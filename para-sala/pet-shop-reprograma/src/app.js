@@ -1,18 +1,11 @@
-// centralizando o conteudo da aplicacao
-// rota raiz
-const express = require("express") //importando o express
+const express = require("express");
 
-//importe da continuacao das rotas de pets
-const petsRoutes = require("./router/petsRoutes")
+const petsRoutes = require("./router/petsRouter");
 
+const app = express();
 
-const app = express() // executo o express
+app.use(express.json());
 
-app.use(express.json()) // uso o bodyparser
+app.use("/pets", petsRoutes);
 
-// criar uma rota raiz
-app.use("/pets", petsRoutes)
-
-
-// exportando para usar o server.js
-module.exports = app
+module.exports = app;

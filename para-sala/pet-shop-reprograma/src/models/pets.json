@@ -1,16 +1,30 @@
 [
   {
     "id": 1,
-    "nomeFantasia": "Pet Shop 4",
-    "endereco": "Recife, 1273 - Pernambuco",
-    "telefone": "11 98765-43214",
-    "atende": ["caes", "papagaio"]
+    "nomeFantasia": "Pet Shop 1",
+    "endereco": "Avenida Paulista, 1273 - Pernambuco",
+    "telefone": "11 12345-6789",
+    "atende": ["caes", "gatos"]
   },
   {
     "id": 2,
-    "nomeFantasia": "Pet Shop 111111",
+    "nomeFantasia": "Pet Shop 2",
     "endereco": "Recife, 1273 - Pernambuco",
     "telefone": "11 98765-4321",
     "atende": ["caes", "papagaio"]
+  },
+  {
+    "id": 3,
+    "nomeFantasia": "PetShop da Barbie",
+    "endereco": "Fairytopia",
+    "telefone": "123456-7896",
+    "atende": ["sapos", "fadas"]
+  },
+  {
+    "id": 4,
+    "nomeFantasia": "PetShop Carneirinhos",
+    "endereco": "Mundo Invertido",
+    "telefone": "109876-54321",
+    "atende": ["cães", "gatos"]
   }
 ]
