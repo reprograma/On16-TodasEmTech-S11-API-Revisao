@@ -54,13 +54,27 @@ const getSeriesById = (req, res) => {
         res.status(500).send({ message: 'Internal error'})
     }
 
+}
 
+const postNewSerie = (req, res) => {
+
+    try {
+        const postSerie = { id, name, genre, synopsis, liked, seasons } = req.body
+        series.push({ id: series.length + 1, name, genre, synopsis, liked, seasons})
+
+        res.status(201).send({ message: 'New serie added', postSerie})
+
+    } catch(err) {
+        res.status(500).send({ message: 'Internal error'})
+    }
 
 }
+
 
 
 module.exports = {
     getAllSeries,
     getByGenre,
-    getSeriesById
+    getSeriesById,
+    postNewSerie
 }
