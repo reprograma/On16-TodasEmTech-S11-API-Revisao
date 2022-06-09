@@ -16,7 +16,7 @@ router.get('/games', controller.getGames)
 router.get('/games/:id', controller.getGamesId)
 
 // //cadastrar novo jogo
-// router.post('/games', controller.addGames)
+router.post('/games', controller.addGames)
 
 // //deletar um jogo especifico 
 // router.delete('/games/:id', controller.deleteGames)
