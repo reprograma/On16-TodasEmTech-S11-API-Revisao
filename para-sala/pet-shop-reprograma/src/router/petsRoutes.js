@@ -17,6 +17,8 @@ router.patch('/name/:id', controller.updateName)
 
 router.put('/atualizar/:id', controller.atualizarPets)
 
+router.delete('/deletar/:id', controller.petDelete)
+
 
 
 
