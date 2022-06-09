@@ -27,7 +27,7 @@ const getById = (req, res) => {
 
 const postGames = (req, res) => {
     const { id, title, launchYear, consoles, liked } = req.body
-     //push inclui algo no final do array
+    //push inclui algo no final do array
     games.push({ id: (games.length + 1), title, launchYear, consoles, liked })
 
     fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) {
@@ -46,55 +46,66 @@ const postGames = (req, res) => {
 
 }
 
-//put aqui 
+//put 
 const gameUpdate = (req, res) => {
     const idGame = req.params.id
     const gameUpdated = req.body
- 
+
     const positionGames = games.findIndex(game => {
-       return game.id == idGame
+        return game.id == idGame
     })
-    if(gameUpdated) {
+    if (gameUpdated) {
         games.splice(positionGames, 1, gameUpdated)
-       
+
         res.status(200).json([{
             gameUpdated,
             "mensagem": "Game atualizado com sucesso"
         }])
     } else {
-        res.status(404).send({message: "Game não encontrado para atualizar."})
+        res.status(404).send({ message: "Game não encontrado para atualizar." })
     }
-   
-  
+
+
 }
 
-
+//delete
+    
 const deleteGame = (req, res) => {
-    const idRequest = req.params.id
-    const indiceGame = games.findIndex(game => {
-        return game.id == idRequest
-    })
-
-
-
-    games.splice(indiceGame, 1)
-    res.status(200).json([{
-        "message": "Game deletado com sucesso querida",
-        "deletado": idRequest,
-        games
-    }])
-
+    try {
+        const idGame = req.params.id
+        const gameFound = games.find(game => game.id == idGame) // encontro o game pelo id
+        const gameIndex = games.indexOf(gameFound) 
+ 
+        if (gameIndex >= 0) { 
+            games.splice(gameIndex, 1) 
+            res.status(200).json([{
+                "message": "Game deletado com sucesso amada",
+                "deletado": idGame,
+                games
+            }])
+            
+        } else {
+            res.status(404).send({ message: "Game não encontrado logo não pode ser deletado" })
+        }
+ 
+    } catch (err) {
+        console.log(err)
+        res.status(500).send({ message: "Erro ao deletar o game" })
+    }
 }
 
+   
+ 
+//patch
 const atualizarLikedGame = (req, res) => {
     let = idGameRequest = req.params.id
     let = likedRequest = req.body.liked
     const likedFound = games.find(game => game.id == idGameRequest)
-    
+
     const likedIndex = games.indexOf(likedFound)
     if (likedIndex >= 0) {
         likedFound.liked = likedRequest
-                 //encontrou, remove, adiciona
+        //encontrou, remove, adiciona
         games.splice(likedIndex, 1, likedFound)
         fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) {
             if (err) {
