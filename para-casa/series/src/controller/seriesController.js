@@ -93,33 +93,33 @@ const deleteById = (request, response) => {
     }
 }
 
-// //Atualiza favoritos (patch)
-// const updateFavorited = (request, response) => {
-//     try{
-//         const idRequest = request.params.id
-//         const favoritedRequest = request.body.favorited
-//         favoritedFilter = musicoteca.find((task) => task.id == idRequest)
+// //Atualiza se gostou da série (patch)
+const updateLiked = (request, response) => {
+    try{
+        const idRequest = request.params.id
+        const likedRequest = request.body.liked
+        likedFilter = series.find(series => series.id == idRequest)
 
-//         if (favoritedFilter) {
-//             favoritedFilter.favorited = favoritedRequest
+        if (likedFilter) {
+            likedFilter.liked = likedRequest
 
-//             response.status(200).json([
-//                 {
-//                 mensagem: "Favoritos alterados com sucesso",
-//                 musicoteca,
-//             },
-//         ])
-//         } else {
-//             response.status(404).json([
-//                 {
-//                     mensagem: "Seus favoritos não foram modificados",
-//                 },
-//             ])
-//         }
-//     } catch (err) {
-//         response.status(500).send({mensagem: "Erro ao cadastrar"})
-//     }
-// }
+            response.status(200).json([
+                {
+                mensagem: "Status alterado com sucesso",
+                series,
+            },
+        ])
+        } else {
+            response.status(404).json([
+                {
+                    mensagem: "Status não modificado",
+                },
+            ])
+        }
+    } catch (err) {
+        response.status(500).send({mensagem: "Erro no servidor"})
+    }
+}
 
 
 
@@ -160,5 +160,6 @@ module.exports = {
     getByGenre,
     getById,
     createSerie,
-    deleteById
+    deleteById,
+    updateLiked
 } 
