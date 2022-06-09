@@ -1,0 +1,1 @@
+router.post("/:id/season/:season/episode", controller.addEpisode)
