@@ -50,10 +50,10 @@ const getByEstado = (req, res) => {
     }
 }
 
-
+// Post -cadastrar novo Petshop
 const postPet = (req, res) => {
-    const { id, nomeFantasia, endereco, telefone, atende } = req.body
-    pets.push({ id: (pets.length + 1), nomeFantasia, endereco, telefone, atende })
+    const { id, nomeFantasia, endereco,estado, telefone, atende } = req.body
+    pets.push({ id: (pets.length + 1), nomeFantasia, endereco, estado, telefone, atende })
 
     fs.writeFile("./src/models/pets.json", JSON.stringify(pets), 'utf8',
         function (err) {
@@ -68,7 +68,7 @@ const postPet = (req, res) => {
     res.status(200).send({ message: "É Sucessoooo!!" })
 }
 
-
+//patch - atualizar apenas o nome do Petshop
 const updateName = (req, res) => {
     let = idPetRequest = req.params.id
     let = nomeFantasiaRequest = req.body.nomeFantasia
@@ -98,6 +98,7 @@ const updateName = (req, res) => {
     }
 }
 
+//Put - atualizar um novo Petshop
 const atualizarPets = (req, res) => {
     const idPetRequest = req.params.id
     const petAtualizado = req.body
