@@ -22,6 +22,6 @@ router.post('/games', controller.addGames)
 router.delete('/games/:id', controller.deleteGames)
 
 // //atualizar avaliação do jogo, campo "liked" da lista Json
-// router.patch('/games/:id/liked', controller.updateGames)
+router.patch('/games/:id/liked', controller.updateGames)
 
 module.exports = router;

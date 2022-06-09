@@ -3,7 +3,7 @@
     "title": "Mario Kart",
     "launchYear": "1992",
     "consoles": ["superNintendo", "nintendo64", "nintendoSwitch"],
-    "liked": false
+    "liked": true
 }, {
     "id": 3,
     "title": "Super Smash Bross",
