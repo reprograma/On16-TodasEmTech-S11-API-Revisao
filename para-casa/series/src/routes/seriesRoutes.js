@@ -1,0 +1,11 @@
+const express = require("express")
+const router = express.Router()
+const controller = require("../controller/seriesController")
+
+router.get("/lista", controller.getSeries)
+
+//desafio
+router.post("/:id/season/:seasonId/episode", controller.addEpisode)
+
+
+module.exports = router
