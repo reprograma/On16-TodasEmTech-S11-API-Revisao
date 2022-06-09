@@ -1,16 +1,102 @@
 [
-  {
-    "id": 1,
-    "nomeFantasia": "Pet Shop 4",
-    "endereco": "Recife, 1273 - Pernambuco",
-    "telefone": "11 98765-43214",
-    "atende": ["caes", "papagaio"]
-  },
-  {
-    "id": 2,
-    "nomeFantasia": "Pet Shop 111111",
-    "endereco": "Recife, 1273 - Pernambuco",
-    "telefone": "11 98765-4321",
-    "atende": ["caes", "papagaio"]
-  }
+    {
+        "id": 1,
+        "nomeFantasia": "petShop Cao Feliz",
+        "endereco": "Avenida Paulista, 1273",
+        "estado": "Sao Paulo",
+        "telefone": "11 12345-6789",
+        "atende": [
+            "caes",
+            "gatos"
+        ]
+    },
+    {
+        "id": 2,
+        "nomeFantasia": "petShop Babinho",
+        "endereco": "Recife, 1273",
+        "estado": "Pernambuco",
+        "telefone": "81 98765-4321",
+        "atende": [
+            "caes",
+            "papagaio"
+        ]
+    },
+    {
+        "id": 3,
+        "nomeFantasia": "petShop Canina",
+        "endereco": "Rua dos Napoleão Maxímo da Silva, 874",
+        "estado": "Paraiba",
+        "telefone": "83 987554412",
+        "atende": "[caracol, fadinhas]"
+    },
+    {
+        "id": 4,
+        "nomeFantasia": "petShop Quatro Patas",
+        "endereco": "Avenida Paulo Gustavo, 1120",
+        "estado": "Mato Grosso",
+        "telefone": "65 99876654",
+        "atende": [
+            "pássaros",
+            "gatos"
+        ]
+    },
+    {
+        "id": 5,
+        "nomeFantasia": "petShop Bichos e Caprichos",
+        "endereco": "Avenida Rio da vida, 453",
+        "estado": "Piauí",
+        "telefone": "86 99775568",
+        "atende": [
+            "caes",
+            "gatos"
+        ]
+    },
+    {
+        "id": 6,
+        "nomeFantasia": "Animais e Companhia",
+        "endereco": "Avenida Luis Santos, 880",
+        "estado": "Rio Grande do Norte",
+        "telefone": "84 32267890",
+        "atende": [
+            "caes",
+            "gatos",
+            "hamsters"
+        ]
+    },
+    {
+        "id": 7,
+        "nomeFantasia": "Mundo Pet",
+        "endereco": "Avenida Epitacio Pessoa, 547",
+        "estado": "Pará",
+        "telefone": "91 32254789",
+        "atende": [
+            "caes",
+            "gatos",
+            "carneiros"
+        ]
+    },
+    {
+        "id": 8,
+        "nomeFantasia": "Pet Store",
+        "endereco": "Avenida Amazonas, 721",
+        "estado": "Amapa",
+        "telefone": "96 3457889",
+        "atende": [
+            "caes",
+            "gatos",
+            "papagaio",
+            "bodes"
+        ]
+    },
+    {
+        "id": 9,
+        "nomeFantasia": "Dog Happy",
+        "endereco": "Avenida João Cirilo, 1789",
+        "estado": "Piaui",
+        "telefone": "86 322145-67",
+        "atende": [
+            "caes",
+            "gatos"
+        ]
+    }
 ]
