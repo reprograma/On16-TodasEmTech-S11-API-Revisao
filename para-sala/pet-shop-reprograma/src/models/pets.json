@@ -18,5 +18,15 @@
             "caes",
             "papagaio"
         ]
+    },
+    {
+        "id": 3,
+        "nomeFantasia": "Petista Shop",
+        "endereco": "Teresina, 1313 - Piauí",
+        "telefone": "3222-2222",
+        "atende": [
+            "unicórnio",
+            "dinossauro"
+        ]
     }
 ]
