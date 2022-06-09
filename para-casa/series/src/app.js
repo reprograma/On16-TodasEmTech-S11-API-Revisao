@@ -6,6 +6,6 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/series', seriesRoutes)
+app.use('/catalogo', seriesRoutes)
 
 module.exports = app
