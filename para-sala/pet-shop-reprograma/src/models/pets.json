@@ -4,20 +4,51 @@
     "nomeFantasia": "Pet Shop 1",
     "endereco": "Avenida Paulista, 1273 - Sao Paulo",
     "telefone": "11 12345-6789",
-    "atende": ["caes", "gatos"]
+    "atende": [
+      "caes",
+      "gatos"
+    ]
   },
   {
     "id": 2,
     "nomeFantasia": "Pet Shop 2",
-    "endereco": "Recife, 1273 - Pernambuco",
-    "telefone": "11 98765-4321",
-    "atende": ["caes", "papagaio"]
+    "endereco": "Avenida Tancredo Neves, 832 - Sao Paulo",
+    "telefone": "11 1234-5678",
+    "atende": [
+      "caes",
+      "gatos",
+      "passaros"
+    ]
   },
   {
     "id": 3,
-    "nomeFantasia": "Novo petshop da May",
-    "endereco": "minha casa",
-    "telefone": "81 99474589",
-    "atende": ["caes"]
+    "nomeFantasia": "Pet Shop 3",
+    "endereco": "Avenida Norte Miguel Arraes de Alencar, 3080 - Recife",
+    "telefone": "81 3314-5813",
+    "atende": [
+      "caes",
+      "gatos",
+      "passaros",
+      "peixes"
+    ]
+  },
+  {
+    "id": 4,
+    "nomeFantasia": "Pet Shop 4",
+    "endereco": "Rua Santa Catarina, 1686 - Curitiba - Parana",
+    "telefone": "41 3314-5813",
+    "atende": [
+      "caes",
+      "gatos"
+    ]
+  },
+  {
+    "id": 5,
+    "nomeFantasia": "Pet Shop 5",
+    "endereco": "Rua Fortaleza, 443 - Manaus - Amazonas",
+    "telefone": "92 98105-9333",
+    "atende": [
+      "caes"
+    ]
   }
 ]
