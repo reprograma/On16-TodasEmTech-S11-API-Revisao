@@ -65,6 +65,25 @@ const addSerie = (request, response) => {
     }   
 }
 
+const deleteSerie = (request, response) => {
+    try {
+        const idRequest = request.params.id
+        const serieIndex = seriesJson.findIndex(serie => serie.id == idRequest)
+
+        seriesJson.splice(serieIndex, 1)
+
+        response.status(200).send({
+            message: "Série deletada",
+            deletada: idRequest,
+            seriesJson
+        })
+    } catch(err){
+        response.status(500).send({
+            message: "Erro ao deletar"
+        })
+    }   
+}
+
 //desafio
 
 const addEpisode = (req, res) => {
@@ -109,5 +128,6 @@ module.exports = {
     getGenero,
     buscaSerie,
     addSerie,
+    deleteSerie,
     addEpisode
 }
