@@ -47,8 +47,27 @@ const postNewGame = (request, response) => {
 
 }
 
+//----------------------------------------------------
+const gameUpdate = (request, response) => {
+  const idGame = request.params.id
+  const atualizar = request.body
+
+  const game = games.findIndex(game => {
+      return game.id == idGame
+  })
+    if (atualizar) {
+      games.splice(game, 1, atualizar)
+
+      request.status(200).json([{
+        atualizar,
+          "mensagem": "Game atualizado!!"
+      }])
+  } else {
+      response.status(404).send({ message: "Game não encontrado" })
+  }
 
 
+}
 
 
 
@@ -61,6 +80,7 @@ const postNewGame = (request, response) => {
   module.exports = {
     getAllGames,
     getGameSearch,
-    postNewGame
+    postNewGame,
+    gameUpdate
 
   }
