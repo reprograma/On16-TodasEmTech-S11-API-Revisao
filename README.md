@@ -18,13 +18,9 @@
 
 - Os *códigos de status* são as respostas dadas pelo servidor através de números padronizados e agrupados em cinco classes:
 
-| Código    | Significado                |
-| --------- | ---------------------------|
-|  100-199  | Respostas de informação    |
-|  200-299  | Respostas de sucesso       |
-|  300-399  | Redirecionamentos          |
-|  400-499  | Erros do cliente           |
-|  500-599  | Erros do servidor          |
+<p align="center">
+  <img src="https://leandromtr.com/codigos-de-status-http/" alt="Códigos de Status HTTP" width="600"/>
+</p>
 
 - As requisições são feitas em URLs que possuem uma estrutura específica.
 
@@ -34,13 +30,9 @@
 
 - Uma aplicação CRUD é uma aplicação que cria um novo registro, que lê as informações desse registro, que faz atualizações dos dados do registro e que consegue apagar um registro.
 
-|  CRUD  |  HTTP  |
-| ------ | ------ |
-|  DELETE  |  Delete  |
-|  GET  |  Read   |
-|  PATCH  |  Update  |
-|  POST  |  Create  |
-|  PUT  |  Update  |
+<p align="center">
+  <img src="https://miro.medium.com/max/1400/1*VTbKBIISbB9PhUK15H9xkA.png" alt="CRUD-HTTP" width="600"/>
+</p>
 
 ## 03. API
 
