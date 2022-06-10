@@ -1,11 +1,9 @@
 const express = require("express");
-
-const petsRoutes = require("./router/petsRouter");
+const petsRouter = require("./router/petsRouter");
 
 const app = express();
 
 app.use(express.json());
-
-app.use("/pets", petsRoutes);
+app.use("/pets", petsRouter);
 
 module.exports = app;

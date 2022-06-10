@@ -28,7 +28,7 @@ const getPetById = (req, res) => {
 
 // list petshop by service
 
-const petService = (req, res) => {
+const getPetByService = (req, res) => {
   try {
     const attendanceReq = req.query.atende;
     console.log(attendanceReq);
@@ -61,7 +61,7 @@ const petService = (req, res) => {
 
 // list petshop by state
 
-const petState = (req, res) => {
+const getPetByState = (req, res) => {
   try {
     const stateRequest = req.query.endereco
 
@@ -198,8 +198,8 @@ const deletePet = (req, res) => {
 module.exports = {
   getPetshop,
   getPetById,
-  petService,
-  petState,
+  getPetByService,
+  getPetByState,
   postPet,
   updatePetName,
   updatePetshop,
