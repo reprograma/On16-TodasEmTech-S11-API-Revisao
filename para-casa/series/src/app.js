@@ -6,6 +6,6 @@ app.use(express.json());
 
 const seriesRoute = require("./router/routesSeries");
 
-app.use("/reproflix", seriesRoute);
+app.use("/reprogramaflix", seriesRoute);
 
 module.exports = app;

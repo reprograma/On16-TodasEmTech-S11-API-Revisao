@@ -5,25 +5,17 @@ const express = require("express");
 const router = express.Router();
 
 //get
-router.get("/series", controller.getAllSeries);
-router.get("/series/genre", controller.getGenre);
-router.get("/series/:id", controller.getById);
+router.get("/series", controller.getAllSeries);//feito
+router.get("/series/genre", controller.getGenre);//feito
+router.get("/series/:id", controller.getById);//feito
+
 //post
-router.post("/series", controller.addNewSerie);
-router.post("/:id/season/:season/episode", controller.addEpisode);
-router.post("/:id/season/:season", controller.addSeason);
+router.post("/series", controller.addNewSerie);//feito
+
 //delete
-router.delete("/series/:id", controller.deleteSerie);
-router.delete("/series/:id/season/:seasonId", controller.deleteSeason);
-router.delete(
-  "/series/:id/season/:seasonId/episode/:episodeId",
-  controller.deleteEpisode
-);
+router.delete("/series/:id", controller.deleteSerie);//feito
+
 //patch
-router.patch("/series/:id/liked", controller.serieUpdated);
-router.patch(
-  "/series/:id/season/:seasonId/episode/:episodeId/watched",
-  controller.episodeUpdated
-);
+router.patch("/series/:id/liked", controller.serieUpdated);//feito
 
 module.exports = router;
