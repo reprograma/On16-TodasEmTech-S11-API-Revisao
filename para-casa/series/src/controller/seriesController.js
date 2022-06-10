@@ -1,4 +1,5 @@
 const library = require("../models/series.json")
+const fs = require("fs")
 
 const seriesAll = (req, res) => {
     try{
@@ -32,11 +33,28 @@ const seriesById = (req, res) => {
     }
 }
 
+const serieAdd = (req, res) => {
+
+    const {name, genre, synopsis, liked, seasons} = req.body
+    library.push({id: library.length + 1, name, genre, synopsis, liked, seasons})
+
+    fs.writeFile("./src/models/series.json", JSON.stringify(library), 'utf8', function (err) { //grava nova série no array
+        if(err){
+            res.status(500).send({ Message: err})
+        }else{
+            console.log("Updated file successfully")
+            const serieFound = library.find(serie => serie.id == library.length) //recupera a série que foi criada no array
+            res.status(200).send(serieFound)
+        }
+    })
+}
+
 
 
 module.exports = {
     seriesAll,
     seriesGenre,
-    seriesById
+    seriesById,
+    serieAdd
 
 }
