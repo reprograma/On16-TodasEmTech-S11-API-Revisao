@@ -3,6 +3,7 @@ const router = express.Router()
 const controller = require("../controller/seriesController")
 
 router.get("/lista", controller.getSeries)
+router.get("/genero", controller.getGenero)
 
 //desafio
 router.post("/:id/season/:seasonId/episode", controller.addEpisode)
