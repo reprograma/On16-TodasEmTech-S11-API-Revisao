@@ -120,6 +120,68 @@ const updateName = (req, res) => {
   }
 };
 
+const updateShop = (req, res) => {
+  let idReq = req.params.id;
+  let petsReq = req.body;
+
+  const petsFound = pets.find((pets) => pets.id == idReq);
+  const petsIndex = pets.indexOf(petsFound);
+
+  if (petsIndex != -1) {
+    petsFound.body = petsReq;
+    pets.slice(petIndex, 1, petsReq);
+    fs.writeFile(
+      "./src/models/pets.json",
+      JSON.stringify(pets),
+      "utf8",
+      function (err) {
+        if (err) {
+          res.status(500).send({ message: err });
+        } else {
+          console.log("File updated successfully");
+          const petsFound = pets.find((pets) => pets.id == id);
+          res.status(200).send(petsFound);
+        }
+      }
+    );
+    res.status(200).json({
+      message: "Pet shop updated successfully",
+      pets,
+    });
+  }
+};
+
+const deletePetShop = (req, res) => {
+  const idReq = req.params.id;
+  const petsIndex = pets.findIndex((pets) => pets.id == idReq);
+
+  pets.splice(petsIndex, 1);
+
+  if (petsIndex != -1) {
+    fs.writeFile(
+      "./src/models/pets.json",
+      JSON.stringify(pets),
+      "utf8",
+      function (err) {
+        if (err) {
+          res.status(500).send({ message: "internal error server" });
+        } else {
+          console.log("File deleted successfully");
+        }
+      }
+    );
+    res.status(200).json({
+      message: "Pet Shop deleted successfully",
+      "deleted pet": idReq,
+      pets,
+    });
+  } else {
+    res.status(404).json({
+      message: "Pet Shop not found",
+    });
+  }
+};
+
 module.exports = {
   getAllShop,
   getIdShop,
@@ -127,4 +189,6 @@ module.exports = {
   getStades,
   postPet,
   updateName,
+  updateShop,
+  deletePetShop,
 };
