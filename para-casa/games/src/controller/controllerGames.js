@@ -21,8 +21,29 @@ const getbyId = (request, response) => {
         }])
     }
 }
+const add = (request, response) =>{
+    try{
+        const {id, title, launchYear, consoles, liked} = request.body
+
+        let novoJogo = {
+            id: (gamesJson.length + 1), title, launchYear, consoles, liked
+        }
+
+    gamesJson.push(novoJogo)
+
+        response.status(201).json({
+            message: "Jogo cadastrado",
+            novoJogo
+        })
+    } catch (err) {
+        response.status(500).send({
+            message: "Erro ao cadastrar"
+        })
+    }
+}
 module.exports = {
     getAll,
-    getbyId
+    getbyId,
+    add
 
 }
