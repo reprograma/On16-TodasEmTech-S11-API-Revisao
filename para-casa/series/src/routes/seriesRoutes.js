@@ -7,6 +7,7 @@ router.get("/genero", controller.getGenero)
 router.get("/buscaserie/:id", controller.buscaSerie)
 router.post("/novaserie", controller.addSerie)
 router.delete("/deletar/:id", controller.deleteSerie)
+router.patch("/liked/:id", controller.likedSerie)
 
 //desafio
 router.post("/:id/season/:seasonId/episode", controller.addEpisode)
