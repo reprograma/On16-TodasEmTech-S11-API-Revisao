@@ -103,7 +103,7 @@ const getPetShopsByAtende = (req, res) => {
     } else {
         res.status(404).send({ message: "Establishment not found" })
     }
-} // verificar pq não está rodando no postman
+} 
 
 
 const getPetShopsbyState = (req, res) => {
@@ -120,7 +120,7 @@ const getPetShopsbyState = (req, res) => {
 
         res.status(404).send({ message: 'State not found'})
     }
-} // verificar pq não está rodando no postman
+} 
 
 
 const updatePetShop = (req, res) => {
