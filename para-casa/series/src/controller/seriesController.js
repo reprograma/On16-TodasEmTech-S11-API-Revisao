@@ -28,8 +28,23 @@ const getGenero = (request, response) => {
             messsage: "Genero não encontrado"
         })
     }
-}        
+}
 
+const buscaSerie = (request, response) => {
+    const idRequest = request.params.id
+    const serieFound = seriesJson.find(serie => serie.id == idRequest)
+
+    if(serieFound) {
+        response.status(200).send({
+            message: "Série encontrada",
+            serieFound
+        })
+    } else {
+        response.status(404).send({
+            message: "Erro ao encontrar série"
+        })
+    }
+}
 
 //desafio
 
@@ -72,6 +87,7 @@ const addEpisode = (req, res) => {
 
 module.exports = {
     getSeries,
-    addEpisode,
-    getGenero
+    getGenero,
+    buscaSerie,
+    addEpisode
 }
