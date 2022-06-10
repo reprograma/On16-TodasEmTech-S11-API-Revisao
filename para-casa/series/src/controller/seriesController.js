@@ -49,12 +49,37 @@ const serieAdd = (req, res) => {
     })
 }
 
+const serieLiked = (req, res) => {
+
+    const idRequest = req.params.id
+    const likedRequest = req.body.liked
+    const serieFind = library.find(serie => serie.id == idRequest) //encontrando a série
+    const serieIndex = library.indexOf(serieFind) //Identificando o indice da série no meu array
+
+    if(serieIndex >= 0){
+        serieFind.liked = likedRequest
+        library.splice(serieIndex, 1, serieFind)
+
+        fs.writeFile("./src/models/series.json", JSON.stringify(library), 'utf8', function (err) {
+            if(err){
+                res.status(500).send({ Message: err})
+            }else{
+                console.log("Updated file successfully")
+                const serieUpdated = library.find(serie => serie.id == idRequest)
+                res.status(200).send(serieUpdated)
+            }
+        })
+    }else{
+        res.status(404).send({ Message: "Id not found"})
+    }
+}
+
 
 
 module.exports = {
     seriesAll,
     seriesGenre,
     seriesById,
-    serieAdd
-
+    serieAdd,
+    serieLiked
 }
