@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "nomeFantasia": "Pet Shop 1",
+        "nomeFantasia": "Petiçaria",
         "endereco": "Avenida Paulista, 1273 - Sao Paulo",
         "telefone": "11 12345-6789",
         "atende": [
@@ -17,6 +17,16 @@
         "atende": [
             "caes",
             "papagaio"
+        ]
+    },
+    {
+        "id": 3,
+        "nomeFantasia": "Pet Shop boys",
+        "endereco": "aruba",
+        "telefone": "98762342",
+        "atende": [
+            "cabras",
+            "bodes"
         ]
     }
 ]
