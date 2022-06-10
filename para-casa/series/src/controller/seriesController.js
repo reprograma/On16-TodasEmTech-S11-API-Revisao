@@ -1,4 +1,3 @@
-const { request } = require("express")
 const seriesJson = require("../models/series.json")
 
 const getSeries = (request, response) => {
@@ -46,6 +45,26 @@ const buscaSerie = (request, response) => {
     }
 }
 
+const addSerie = (request, response) => {
+    try{
+        const {id, name, genre, synopsis, liked, seasons} = request.body
+        let newSerie = {
+            id: seriesJson.length + 1, name, genre, synopsis, liked, seasons
+        }
+
+    seriesJson.push(newSerie)
+
+        response.status(201).json({
+            message: "Série cadastrada",
+            seriesJson
+        })
+    } catch(err){
+        response.status(500).send({
+            message: "Erro ao efetuar o cadastro"
+        })
+    }   
+}
+
 //desafio
 
 const addEpisode = (req, res) => {
@@ -89,5 +108,6 @@ module.exports = {
     getSeries,
     getGenero,
     buscaSerie,
+    addSerie,
     addEpisode
 }
