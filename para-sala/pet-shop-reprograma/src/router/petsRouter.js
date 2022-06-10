@@ -8,9 +8,9 @@ router.get("/list", controller.getPetshop)
 
 router.get("/list/:id", controller.getPetById)
 
-router.get("/list/service", controller.petService)
+router.get("/service", controller.petService)
 
-router.get("/list/state")
+router.get("/state", controller.petState)
 
 router.post("/add", controller.postPet)
 
