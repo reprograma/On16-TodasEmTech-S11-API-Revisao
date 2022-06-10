@@ -172,7 +172,11 @@ pasta-do-projeto
 ```
 
 ```server.js:``` configura a porta e inicia o servidor;
+
 ```app.js:``` indica as rotas e as requisições;
+
 ```musicRoutes.js:``` cria rotas e verbos (**PASTA ROUTES**);
+
 ```musicController.js:``` cria lógica (**PASTA CONTROLLER**);
+
 ```music.json:``` realiza o armazenamento dos dados (**PASTA MODEL**).
