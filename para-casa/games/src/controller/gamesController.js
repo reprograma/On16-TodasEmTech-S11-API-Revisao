@@ -22,11 +22,10 @@ const getIdGame = (req, res) => {
 const addGame = (req, res) => {
     const {id, title, launchYear, consoles, liked} = req.body
     games.push({ id: (games.length +1), title, launchYear, consoles, liked})
-    
 
     if(games.length > -1) {
-        const newGame = games.find(game => game.id == id)
-        res.status(201).send([{message: "Novo jogo adicionado", games}])
+        const gameFound = games.find((game) => game.id == id)
+        res.status(201).send([{message: "Novo jogo adicionado", gameFound, games}])
 
     } else { res.status(500).send([{message: "Erro no servidor"}])
 
@@ -34,7 +33,7 @@ const addGame = (req, res) => {
 }
 
 const changeGame = (req, res) => {
-    const idRequest = req.params.id 
+    const idRequest = req.params.id
     let gameRequest = req.body
     let gamesFilter = games.findIndex(game => game.id == idRequest)
 

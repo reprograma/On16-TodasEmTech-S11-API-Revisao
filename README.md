@@ -1,54 +1,132 @@
-Os slides da aula tão [aqui](https://github.com/reprograma/On16-TodasEmTech-S11-API-Revisao/blob/main/material/revisao.pdf) ❤️
-
 <h1 align="center">
     <br>
-    <p align="center">Aulinha de Revisão da On16<p>
+    <p align="center">Projeto S11 - API Games e Séries 🚀 <p>
 </h1>
+<p align="center">
+<img src= "material\image\cat.gif" width="50%" height="30%"/>
+</p>
+<p align="center">
+ 
+</p>
 
-# Simbora, gatinhas?!
+### Projeto de Revisão API - Semana 11:
 
-Estamos chegando em mais um período de revisão, passa <s>muito</s> rápido, né?
+O projeto da Semana 11 é uma API REST criada para o curso da {Reprograma}
 
-Atentando-se ao fato de sempre validarmos o conteúdo visto até determinado ponto do nosso curso, iremos trabalhar em um projeto desenvolvido por vocês (novamente).
+A interface é um CRUD, onde é possível listar as séries/games na base de dados; listar games através do ID; listar séries através de um gênero específico ; listar as séries através de um ID; cadastrar novas séries/games; atualizar um game específico; alterar séries/games favoritadas; deletar séries/games específicos.
 
-## Por onde começamos?
+**E Como funciona?** 💬
 
-Vamos relembrar um pouco do que vimos até aqui? Não fique preocupada em decorar todas as sintaxes e códigos existentes no mundo. Isso vem com o tempo, relaxa!
+1. Clone o projeto através do comando:
+`$git clone https://github.com/louicosta/On16-TodasEmTech-S11-API-Revisao`
 
-Vamos começar relembrando nossa estrutura de uma maneira geral:
+2. Inicialize o package.json com todas as configurações do projeto através dos comandos: </p>
+`$npm install` </p>
+`$npm i express`
+
+4. Inicialize o Nodemon com o comando `npm start` para que você possa executar os testes localmente.
+
+
+### Recursos e tecnologias utilizadas para a construção da API:
+
+* **Node.Js** - versão 14.17.0;
+* Dependências Node.Js:
+   * **Express** - versão 4.18.1;
+   * **Nodemon** - versão 2.0.16;
+* **Git**;
+* **Visual Studio Code**;
+* **Postman**;
+
+
+### Testando as rotas na sua máquina:
+
+1. Abra o aplicativo [POSTMAN](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related?hl=pt-BR);
+
+2. Teste as rotas usando esta rota raiz na URL do Postman: localhost:7676/games/ ou localhost:7878/series/
+
+3. As rotas/endpoints estão disponiveis na pasta 📁- routes 
+
+4. Para utilizar as rotas de *POST, PUT e PATCH* deve-se usar no Postman os verbos de acordo e, clicar em *body* e posteriormente em *raw*, trocar de *text* para *JSON* e apertar *Send*.
+
+
+<img width="500" src= "material/image/postman%201.png"/>
+
+### Estrututura de Arquivos da API:
 
 ```
-pasta-do-projeto
-├── src
-│   ├── controller
-│   ├── model
-│   ├── routes
-│   └── index.js
-├── server.js
-├── package.json
+├─📁games
+│  ├─📁src
+│    ├──📁controllers
+|    |  ├── gamesController.js
+│    ├──📁models
+|    |  ├── games.json
+│    ├──📁routes 
+│    |  ├── gamesRoutes.js
+|    ├── app.js
+├─── .gitignore
+├─── package-lock.json
+├─── package.json
+├─── server.js
 ```
 
-Agora vamos relembrar alguns conceitos importantes:
+```
+├─📁series
+│  ├─📁src
+│    ├──📁controllers
+|    |  ├── seriesController.js
+│    ├──📁models
+|    |  ├── series.json
+│    ├──📁routes 
+│    |  ├── seriesRoutes.js
+|    ├── app.js
+├─── .gitignore
+├─── package-lock.json
+├─── package.json
+├─── server.js
+```
 
-- **M**odel: é responsável pela leitura e escrita de dados, e também de suas validações. É onde está toda a lógica de negócio da aplicação.
-- **V**iew: é a camada de interação com o usuário. Ela apenas faz a exibição dos dados, sendo ela por meio de um html ou xml (não usaremos ele, ta?).
-- **C**ontroller: O responsável por receber todas as requisições do usuário. Seus métodos chamados actions são responsáveis por uma página, controlando qual model usar e qual view será mostrado ao usuário.
+</br>
 
-Passo-a-passo com a mão no <s>massa</s> código:
+### Manipulação das Rotas de Games:
 
-1. Esqueleto do projeto
-2. Models
-3. Controllers
-4. Rotas
-5. App.js
-6. Server.js
+| Método HTTP | Endpoint                     | Descrição                                     |
+| ----------- | ---------------------------- | --------------------------------------------- |
+| ROTA RAIZ   | `/games`                     | Utilizada antes de todo endpoint              |
+| GET         | `/games`                     | Retorna todos os games                        |
+| GET         | `/games/:id`                 | Retorna um game por id                        |
+| POST        | `/add`                       | Cadastra um novo game                         |
+| PUT         | `/change/:id`                | Altera um game por id                         |
+| PATCH       | `/update/:id/liked`          | Altera a tag liked de um game                 |
+| DELETE      | `/delete/:id`                | Remove um game específico                     |
 
-### Postman
+</br>
 
-Essa ferramenta permite testar serviços RESTful por meio do envio de requisições HTTP e da análise do seu retorno. Você pode salvar todas as suas _collections_ e facilitar o seu dia-a-dia como pessoa desenvolvedora!
+### Manipulação das Rotas de Series:
 
-### Github
+| Método HTTP | Endpoint                              | Descrição                                     |
+| ----------- | --------------------------------------| --------------------------------------------- |
+| ROTA RAIZ   | `/series`                             | Utilizada antes de todo endpoint              |
+| GET         | `/series`                             | Retorna todas as séries                       |
+| GET         | `serie/search`                        | Retorna apenas uma série por gênero           |
+| GET         | `/series/:id`                         | Retorna apenas uma série por id               |
+| POST        | `/add`                                | Cadastra uma nova série                       |
+| DELETE      | `/delete/:id`                         | Remove uma série específica                   |
+| PATCH       | `/liked`                              | Altera a tag liked de uma série               |
+| POST        | `/serie/:id/season/:seasonId/episode` | Cadastra um novo episódio                     |
+</br>
 
-Não podemos esquecer aquele commit bonitão para mostrar todo o esforço de vocês, não é mesmo?
 
----
+</br>
+</br>
+
+<span align="center">
+
+#  Muito obrigada a você que chegou até aqui! 💜 </h2> 
+
+</span>
+
+<p align="center">
+<img src="material\image\simpsons.gif" width="70%" height="70%"/>
+</p>
+<p align="center">
+  <a> 
