@@ -1,17 +1,21 @@
  const series = require('../models/series.json')
 
+
+
 //  GET retorna lista de séries
-const getAllMusics = (request, response) => {
-  if (musicaFound.length > 0) {
-    response.status(200).send(musicaFound);
-  } else {
-    response.status(404).send([
-      {
-        mensagem: "Infelizmente esse artista foi não encontrado!",
-      },
-    ]);
-  }
+const listaSeries = (request, response) => {
+  try {
+    response.status(200).json([
+          {
+            "series": series,
+          },
+        ]);
+      } catch (err) {
+        response.status(500).send({ menssage: "Error no server" });
+      }
 };
+
+   
 
 
  // POST adciona nova série
@@ -58,5 +62,6 @@ const likedSerie = (request, response) => {
 
 module.exports = {
     postSerie,
-    likedSerie
+    likedSerie,
+    listaSeries
  }
