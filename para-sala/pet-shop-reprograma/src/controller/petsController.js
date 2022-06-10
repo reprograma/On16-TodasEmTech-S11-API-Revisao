@@ -48,34 +48,25 @@ const getPetByService = (req, res) => {
   }
 };
 
-// const petService = (req, res) => {
-//   const attendanceReq = req.query.atende
-
-//   console.log(attendanceReq)
-
-//   const filteredPet = pets.filter((pet) => pet.atende.includes(attendanceReq))
-//   console.log(filteredPet)
-
-//   res.status(200).send(filteredPet)
-//}
-
 // list petshop by state
 
 const getPetByState = (req, res) => {
   try {
-    const stateRequest = req.query.endereco
+    const stateRequest = req.query.endereco;
 
-    const foundPet = pets.find((pet) => pet.endereco.toLowerCase() === stateRequest)
-    console.log(foundPet)
+    const foundPet = pets.find(
+      (pet) => pet.endereco.toLowerCase() === stateRequest
+    );
+    console.log(foundPet);
     if (foundPet) {
-      res.status(200).send(foundPet)
+      res.status(200).send(foundPet);
     } else {
-      res.status(404).send({ message: "Petshop not found!" })
+      res.status(404).send({ message: "Petshop not found!" });
     }
   } catch (err) {
-    res.status(500).send({ message: "Server Error"})
+    res.status(500).send({ message: "Server Error" });
   }
-}
+};
 
 // add new petshop
 
