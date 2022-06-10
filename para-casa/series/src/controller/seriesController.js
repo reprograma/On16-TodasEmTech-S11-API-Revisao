@@ -84,6 +84,26 @@ const deleteSerie = (request, response) => {
     }   
 }
 
+const likedSerie = (request, response) => {
+    const idRequest = request.params.id
+    const likedRequest = request.body.liked
+
+    let serieIndex = seriesJson.find(serie => serie.id == idRequest)
+
+    if(serieIndex){
+        serieIndex.liked = likedRequest
+
+        response.status(200).json({
+            message: "Série alterada",
+            seriesJson
+        })
+    } else {
+        response.status(500).send({
+            message: "Erro ao alterar"
+        })
+    }
+}
+
 //desafio
 
 const addEpisode = (req, res) => {
@@ -129,5 +149,6 @@ module.exports = {
     buscaSerie,
     addSerie,
     deleteSerie,
+    likedSerie,
     addEpisode
 }
