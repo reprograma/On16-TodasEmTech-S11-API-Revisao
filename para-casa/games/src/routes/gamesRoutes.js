@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.get("/gamesList", controller.getAllGames)
 router.get("/gameSearch/:id", controller.getGameSearch)
+router.post("gameNew", controller.postNewGame)
 
 
 

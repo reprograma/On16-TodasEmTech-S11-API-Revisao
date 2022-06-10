@@ -30,6 +30,22 @@ const getGameSearch = (request, response) => {
 
 //----------------------------------------------------
 
+const postNewGame = (request, response) => {
+  const { id, title, launchYear, consoles, liked } = request.body
+  games.push({ id: (games.length + 1), title, launchYear, consoles, liked })
+
+  fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) {
+      if (err) {
+          response.status(500).send({ message: err })
+
+      } else {
+          console.log("Game criado!")
+          const gameFound = games.find(game => game.id == id)
+          response.status(201).send(gameFound)
+      }
+  })
+
+}
 
 
 
@@ -45,5 +61,6 @@ const getGameSearch = (request, response) => {
   module.exports = {
     getAllGames,
     getGameSearch,
+    postNewGame
 
   }
