@@ -16,16 +16,27 @@ const seriesGenre = (req, res) => {
     if(genreFilter.length > 0){
         res.status(200).send(genreFilter)
     }else{
-        res.status(500).send({ Message: "Genre not found"})
+        res.status(404).send({ Message: "Genre not found"})
     }
-
-
-
-
 }
+
+const seriesById = (req, res) => {
+
+    const idRequest = req.params.id
+    const idFilter = library.filter( serie => serie.id == idRequest)
+
+    if(idFilter.length > 0){
+        res.status(200).send(idFilter)
+    }else{
+        res.status(404).send({ Message: "Id not found"})
+    }
+}
+
+
 
 module.exports = {
     seriesAll,
-    seriesGenre
+    seriesGenre,
+    seriesById
 
 }
