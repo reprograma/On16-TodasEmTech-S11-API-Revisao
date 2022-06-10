@@ -6,11 +6,7 @@ const fs = require("fs");
 
 const getGames = (req, res) => {
   try {
-    res.status(200).json([
-      {
-        Games: games,
-      },
-    ]);
+    res.status(200).send(games);
   } catch (err) {
     res.status(500).send({ message: "Server Error" });
   }
@@ -25,11 +21,7 @@ const getGameById = (req, res) => {
     const gameFound = games.find((game) => game.id === parseInt(idRequest));
 
     if (gameFound) {
-      res.status(200).json([
-        {
-          Game: gameFound,
-        },
-      ]);
+      res.status(200).send(gameFound)
     } else {
       res.status(404).send({ message: "Game not found!" });
     }
@@ -53,7 +45,7 @@ const addGame = (req, res) => {
         res.status(500).send({ message: err });
       } else {
         console.log("Updated file!");
-        const gameFound = game.find((game) => game.id === id);
+        const gameFound = games.find((game) => game.id === id);
         res.status(200).send(gameFound);
       }
     }
@@ -133,10 +125,10 @@ const likeGames = (req, res) => {
   if (gameIndex > 0) {
     foundGame.liked = like;
 
-    games.splice(gameIndex, 1, like);
+    games.splice(gameIndex, 1, foundGame);
 
     fs.writeFile(
-      "./src/models/pets.json",
+      "./src/models/games.json",
       JSON.stringify(games),
       "utf-8",
       function (err) {

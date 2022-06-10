@@ -25,6 +25,13 @@
     "title": "GTA V",
     "launchYear": "2013",
     "consoles": ["ps4", "xbox", "pc", "ps3"],
-    "liked": true
+    "liked": false
+  },
+  {
+    "id": 5,
+    "title": "League Of Legends",
+    "launchYear": "2009",
+    "consoles": ["pc"],
+    "liked": false
   }
 ]
