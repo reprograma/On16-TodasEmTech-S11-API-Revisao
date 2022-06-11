@@ -68,7 +68,7 @@ Configuração das rotas para manipular a lista de games:
 Clonar o repositório
 
 ```
-git clone https://github.com/mflilian/DiversyHUB-API
+git clone https://github.com/lialaurindo/On16-TodasEmTech-S11-API-Revisao
 ```
 
 Entrar na pasta do repositório
