@@ -89,12 +89,30 @@ const likedGames = (req, res) => {
     }
 }
 
+const deleteGames = (req, res) => {
+    const idRequest = req.params.id
+    const indexGame = catalog.findIndex((game) => game.id == idRequest)
+
+    if (indexGame != -1) {
+        catalog.splice(indexGame, 1)
+    
+        fs.writeFile("./src/models/games.json", JSON.stringify(catalog), "utf8", function (err) {
+            if(err){
+                res.status(500).send({ Message: err})
+            }else{
+                res.status(200).send({ Message: "Game deleted"})
+            }
+        })
+    }else{
+        res.status(404).send({ Message: "Id not found"})
+    }
+}
 
 module.exports = {
     allGames,
     idGames,
     addGames,
     updateGames,
-    likedGames
-    
+    likedGames,
+    deleteGames
 }
