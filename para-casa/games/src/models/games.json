@@ -6,7 +6,7 @@
         "consoles": [
             "ps4"
         ],
-        "liked": true
+        "liked": false
     },
     {
         "id": 2,
@@ -27,6 +27,13 @@
             "nintendo64",
             "nintendoSwitch"
         ],
+        "liked": true
+    },
+    {
+        "id": 4,
+        "title": "Guitar Hero",
+        "launchYear": "2007",
+        "consoles": "ps4",
         "liked": true
     }
 ]
