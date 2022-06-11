@@ -4,16 +4,16 @@ const fs = require("fs")
 const createPet = (req, res) => {
     const { id, nomeFantasia, endereco, telefone, atende } = req.body
     pets.push({ id : (pets.length +1), nomeFantasia, endereco, telefone, atende })
-    //LEMBRA Q VCS FALAVAM MAYYYY PQ NAO TA MUDANDO LA NO MEU MODELS? COMO EU FAÇO PRA MUDAR LA TBM? 
-    // tem um cara chamado FS 
-    // O Node. js nos ajuda a armazenar, acessar e gerenciar dados em nosso sistema operacional. 
+    //LEMBRA Q VCS FALAVAM MAYYYY PQ NAO TA MUDANDO LA NO MEU MODELS? COMO EU FAÇO PRA MUDAR LA TBM?
+    // tem um cara chamado FS
+    // O Node. js nos ajuda a armazenar, acessar e gerenciar dados em nosso sistema operacional.
     // Os recursos comumente usados ​​do módulo fs incluem fs. readFile para ler dados de um arquivo, fs.
     fs.writeFile("./src/models/pets.json", JSON.stringify(pets), 'utf8', function (err) { // gravando novo pet no array de pets
         if (err) {
             res.status(500).send({ message: err })
         } else {
             console.log("Arquivo atualizado com sucesso!")
-            const petFound = pets.find(pet => pet.id == id) // recupero o pet que foi criado no array de pets      
+            const petFound = pets.find(pet => pet.id == id) // recupero o pet que foi criado no array de pets
             res.status(200).send(petFound)
         }
     })
@@ -137,9 +137,9 @@ const getPetByAtendende = (req, res) => {
     console.log(atendeRequest)
 
     let petFound = pets.filter(pet => pet.atende.includes(atendeRequest))
-   
+
     console.log(petFound)
-    
+
     if (petFound.length > 0) {
         res.status(200).send(petFound)
     } else {
