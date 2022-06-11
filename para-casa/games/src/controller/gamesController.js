@@ -35,16 +35,66 @@ const addGames = (req, res) => {
     })
 }
 
+const updateGames = (req, res) => {
+    const idRequest = req.params.id
+    const {title, launchYear, consoles, liked} = req.body
+    const gamesFound = catalog.find((games => games.id == idRequest))
+    const gamesIndex = catalog.indexOf(gamesFound)
 
+    if(gamesIndex != -1){
+        catalog[gamesIndex] = {
+            id: parseInt(idRequest),
+            title,
+            launchYear,
+            consoles,
+            liked
+        }
+        res.status(200).send(catalog[gamesIndex])
 
+        fs.writeFile("./src/models/games.json", JSON.stringify(catalog), "utf8", function (err) {
+            if(err){
+                res.status(500).send({ Message: err})
+            }else{
+                console.log("Updated file successfully")
+                const gameFound = catalog.find((games) => games.id == catalog.length)
+                res.status(200).send(gameFound)
+            }
+        })
+    }else{
+        res.status(404).send({ Message: "Id not found"})
+    }
+}
 
+const likedGames = (req, res) => {
+    const idRequest = req.params.id
+    const likedRequest = req.body.liked
+    const gameFind = catalog.find((game) => game.id == idRequest) //encontrando a série
+    const gameIndex = catalog.indexOf(gameFind) //Identificando o indice da série no meu array
 
+    if (gameIndex >= 0) {
+        gameFind.liked = likedRequest
+        catalog.splice(gameIndex, 1, gameFind)
 
+        fs.writeFile("./src/models/games.json", JSON.stringify(catalog), "utf8", function (err) {
+            if(err){
+                res.status(500).send({ Message: err})
+            }else{
+                console.log("Updated file successfully")
+                const gameFound = catalog.find((games) => games.id == catalog.length)
+                res.status(200).send(gameFound)
+            }
+        })
+    }else{
+        res.status(404).send({ Message: "Id not found"})
+    }
+}
 
 
 module.exports = {
     allGames,
     idGames,
-    addGames
+    addGames,
+    updateGames,
+    likedGames
     
 }
