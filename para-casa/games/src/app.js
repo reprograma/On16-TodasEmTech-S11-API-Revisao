@@ -4,7 +4,7 @@ const app = express()
 
 app.use(express.json())
 
-const gamesRoutes = require("./router/gamesRoutes")
+const gamesRoutes = require("./routes/gamesRoutes")
 
 app.use("/games", gamesRoutes)
 
