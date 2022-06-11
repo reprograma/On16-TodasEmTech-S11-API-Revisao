@@ -91,6 +91,32 @@ const deleteGame = (request, response) => {
   }
 }
 
+//--------------------------------------------------------
+
+const likedGame = (request, response) => {
+  let = idGameRequest = request.params.id
+  let = likedRequest = request.body.liked
+  const likedFound = games.find(game => game.id == idGameRequest)
+
+  const likedIndex = games.indexOf(likedFound)
+  if (likedIndex >= 0) {
+      likedFound.liked = likedRequest
+      games.splice(likedIndex, 1, likedFound)
+      fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) {
+          if (err) {
+            response.status(500).send({ message: err })
+          } else {
+              console.log("Seu game foi alterado")
+              const likedUpdated = games.find(game => game.id ==
+                  idGameRequest)
+                  response.status(200).send(likedUpdated)
+          }
+      })
+  } else {
+    response.status(404).send({ message: "Jogo não encontrado" })
+  }
+}
+
 
 
 
@@ -104,6 +130,7 @@ const deleteGame = (request, response) => {
     getGameSearch,
     postNewGame,
     gameUpdate,
-    deleteGame
+    deleteGame,
+    likedGame 
 
   }
