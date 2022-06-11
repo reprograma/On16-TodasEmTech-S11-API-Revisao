@@ -114,6 +114,161 @@ const serieDelete = (req, res) => {
   }
 }
 
+const episodeAdd = (req, res) => {
+  const idRequest = req.params.id
+  const idSesion = req.params.seasonId
+  const { code, name, watched } = req.body
+
+  const series = library.find((serie) => serie.id == idRequest)
+
+  if (series != undefined) {
+    const season = series.seasons.find((series) => series.id == idSesion)
+    if (season != undefined) {
+      season.episodes.push({
+        id: season.episodes.length + 1,
+        code,
+        name,
+        watched,
+      })
+
+      fs.writeFile(
+        "./src/models/series.json",
+        JSON.stringify(library),
+        "utf8",
+        function (err) {
+          if (err) {
+            res.status(500).send({ Message: err })
+          } else {
+            res.status(200).send({ Message: "Updated file successfully" })
+          }
+        }
+      )
+    } else {
+      res.status(500).send({ Message: "Season not found" })
+    }
+  } else {
+    res.status(500).send({ Message: "Series not found" })
+  }
+}
+
+const seasonAdd = (req, res) => {
+  const idRequest = req.params.id
+  const { code, episodes } = req.body
+
+  const seriesFound = library.find((series) => series.id == idRequest)
+
+  if (seriesFound != undefined) {
+    seriesFound.seasons.push({
+      id: seriesFound.seasons.length + 1,
+      code,
+      episodes,
+    })
+
+    fs.writeFile(
+      "./src/models/series.json",
+      JSON.stringify(library),
+      "utf8",
+      function (err) {
+        if (err) {
+          res.status(500).send({ Message: err })
+        } else {
+          res.status(200).send({ Message: "Updated file successfully" })
+        }
+      }
+    )
+  } else {
+    res.status(500).send({ Message: "Series not found" })
+  }
+}
+
+const seasonDelete = (req, res) => {
+  const idRequest = req.params.id
+  const idSeason = req.params.seasonId
+
+  const series = library.find((serie) => serie.id == idRequest)
+
+  if (series != undefined) {
+    const seasonFind = series.seasons.findIndex(
+      (series) => series.id == idSeason
+    )
+    if (seasonFind != -1) {
+      series.seasons.splice(seasonFind, 1)
+
+      fs.writeFile(
+        "./src/models/series.json",
+        JSON.stringify(library),
+        "utf8",
+        function (err) {
+          if (err) {
+            res.status(500).send({ Message: err })
+          } else {
+            res.status(200).send({ Message: "Season deleted" })
+          }
+        }
+      )
+    } else {
+      res.status(500).send({ Message: "Season not found" })
+    }
+  } else {
+    res.status(500).send({ Message: "Series not found" })
+  }
+}
+
+const episodeDelete = (req, res) => {
+  try {
+    const idRequest = req.params.id
+    const seasonId = req.params.seasonId
+    const episodeId = req.params.episodeId
+
+    const series = library.find((serie) => serie.id == idRequest)
+    const season = series.seasons.find((season) => season.id == seasonId)
+    const episode = season.episodes.findIndex(
+      (episodes) => episodes.id == episodeId
+    )
+
+    season.episodes.splice(episode, 1)
+
+    fs.writeFile(
+      "./src/models/series.json",
+      JSON.stringify(library),
+      "utf8",
+      function (err) {}
+    )
+    res.status(200).send({ Message: "Episode deleted" })
+  } catch (exception) {
+    res.status(500).send({ Message: exception.message })
+  }
+}
+
+const episodeWatched = (req, res) => {
+  try{
+    const idRequest = req.params.id
+    const seasonId = req.params.seasonId
+    const episodeId = req.params.episodeId
+    const watched = req.body.watched
+
+    const series = library.find((serie) => serie.id == idRequest)
+    const season = series.seasons.find((season) => season.id == seasonId)
+    const episode = season.episodes.find(
+      (episodes) => episodes.id == episodeId
+    )
+
+    episode.watched = watched
+
+    fs.writeFile(
+      "./src/models/series.json",
+      JSON.stringify(library),
+      "utf8",
+      function (err) {}
+    )
+    res.status(200).send({ Message: "Episode updated" })
+
+
+  }catch(exception){
+    res.status(500).send({ Message: exception.message})
+  }
+}
+
 module.exports = {
   seriesAll,
   seriesGenre,
@@ -121,4 +276,9 @@ module.exports = {
   serieAdd,
   serieLiked,
   serieDelete,
+  episodeAdd,
+  seasonAdd,
+  seasonDelete,
+  episodeDelete,
+  episodeWatched
 }

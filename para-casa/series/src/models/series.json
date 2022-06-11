@@ -27,6 +27,12 @@
                         "code": "ep03",
                         "name": "Episódio 3",
                         "watched": false
+                    },
+                    {
+                        "id": 4,
+                        "code": "ep04",
+                        "name": "Episódio 4",
+                        "watched": true
                     }
                 ]
             },
@@ -71,7 +77,7 @@
                         "id": 1,
                         "code": "ep01",
                         "name": "Aquele onde tudo começa",
-                        "watched": true
+                        "watched": false
                     },
                     {
                         "id": 2,
@@ -84,12 +90,6 @@
                         "code": "ep03",
                         "name": "Aquele com a namorada do Michael",
                         "watched": true
-                    },
-                    {
-                        "id": 4,
-                        "code": "ep04",
-                        "name": "Aquele com o Jim",
-                        "watched": false
                     }
                 ]
             },
