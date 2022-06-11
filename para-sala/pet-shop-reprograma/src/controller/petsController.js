@@ -79,13 +79,34 @@ const updateName = (request, response) => {
     }
 }
 
+//DELETE por id
+const deletePet = (request, response) => {
+    try {
+        const idPetRequest = request.params.id
+
+        const indexPet = pets.findIndex((petshop) => petshop.id == idPetRequest)
+        pets.splice(indexPet, 1)
+
+        response.status(200).json([{
+            "message": "Pet Shop deletado!",
+            "deletado": idPetRequest,
+            pets
+        }])
+    } catch (err) {
+        response.status(500).send([{
+            "message": "Não foi possível deletar o Pet Shop"
+        }])
+    }
+}
+
 // Rota:    localhost:2022/pets/name/2
 
 module.exports = {
     listaPetShops,
     petById,
     postPet,
-    updateName
+    updateName,
+    deletePet
 }
     
 

@@ -6,6 +6,7 @@ router.get('/lista', controller.listaPetShops)
 router.get('/:id', controller.petById)
 router.post('/adicionar', controller.postPet)
 router.patch('/name/:id', controller.updateName)
+router.delete('/delete/:id', controller.deletePet)
 
 //POST   localhost:2022/pets/adicionar
 module.exports = router
