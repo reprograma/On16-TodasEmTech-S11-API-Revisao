@@ -20,6 +20,21 @@ const idGames = (req, res) => {
     }
 }
 
+const addGames = (req, res) => {
+    const {title, launchYear, consoles, liked} = req.body
+    catalog.push({id: catalog.length +1, title, launchYear, consoles, liked})
+
+    fs.writeFile("./src/models/games.json", JSON.stringify(catalog), "utf8", function (err) {
+        if(err){
+            res.status(500).send({ Message: err})
+        }else{
+            console.log("Updated file successfully")
+            const gameFound = catalog.find((games) => games.id == catalog.length)
+            res.status(200).send(gameFound)
+        }
+    })
+}
+
 
 
 
@@ -29,6 +44,7 @@ const idGames = (req, res) => {
 
 module.exports = {
     allGames,
-    idGames
+    idGames,
+    addGames
     
 }
