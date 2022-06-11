@@ -3,6 +3,33 @@ const pets = require('../models/pets.json') //importando o models  chamo ele de 
 const fs = require('fs') //fs é uma ferramenta que vai alterar algum arquivo dentro do meu projeto, e sem ele só altera no postaman. const para importar o fs que modifica as alterações tb no models(json)
 
 
+//GET lista todos os pet shops
+const listaPetShops = (request, response) => {
+    try {
+        response.status(200).json([{
+            "Pet Shops": pets
+        }])
+    } catch (err) {
+        response.status(500).send ({
+            message: "Erro no servidor" 
+        })
+    }
+}
+
+//GET rota por id
+const petById = (request, response) => {
+    try {
+        let idRequest = request.params.id
+        let petFound = pets.find(petshop => petshop.id == idRequest)
+
+        response.status(200).send(petFound)
+    } catch (err) {
+        response.status(404).send ({
+            "message": "Pet Shop não encontrado."
+        })
+    }
+}
+
 // rota POST
 const postPet = (require, response) => { 
     const { id, nomeFantasia, endereco, telefone, atende } = request.body //essas chaves sao o body, ou seja, as informações serão passadas no body do postman
@@ -55,6 +82,8 @@ const updateName = (request, response) => {
 // Rota:    localhost:2022/pets/name/2
 
 module.exports = {
+    listaPetShops,
+    petById,
     postPet,
     updateName
 }
