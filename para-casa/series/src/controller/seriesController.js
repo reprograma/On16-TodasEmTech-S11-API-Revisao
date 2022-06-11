@@ -92,17 +92,22 @@ const likedSerie = (request, response) => {
 
 //DELETE series
 const deleteSerie = (request, response) => {
-    const idSerieRequest = request.params.id
+    try {
+        const idSerieRequest = request.params.id
 
-    const indiceSerie = series.findIndex((serie) => serie.id == idSerieRequest)
+        const indiceSerie = series.findIndex((serie) => serie.id == idSerieRequest)
+        series.splice(indiceSerie, 1)
 
-    series.splice(indiceSerie, 1)
-
-    response.status(200).json([{
+        response.status(200).json([{
         "message": "A série foi deletada com sucesso!.",
         "deletada": idSerieRequest,
         series
-    }])
+    }])  
+    } catch(err) {
+        response.status(500).send([{
+            "message": "Não foi possível deletar a série."
+        }])
+    }
 }
 
 module.exports = {

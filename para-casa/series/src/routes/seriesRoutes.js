@@ -10,7 +10,7 @@ router.get('/genero/', controller.getByGenero)
 router.get('/porId/:id', controller.getById)
 router.post('/adicionar/', controller.postSerie)
 router.patch('/series/liked/:id', controller.likedSerie)
-router.delete('/delete', controller.deleteSerie)
+router.delete('/delete/:id', controller.deleteSerie)
 
 
 // para exportar
