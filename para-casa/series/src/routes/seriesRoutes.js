@@ -7,6 +7,6 @@ router.get("/genre", controller.seriesGenre)
 router.get("/:id",controller.seriesById)
 router.post("/add", controller.serieAdd)
 router.patch("/liked/:id", controller.serieLiked)
-// router.delete("/:id", controller.serieDelete)
+router.delete("/delete/:id", controller.serieDelete)
 
 module.exports = router

@@ -74,6 +74,25 @@ const serieLiked = (req, res) => {
     }
 }
 
+const serieDelete = (req, res) => {
+
+    const idRequest = req.params.id
+    const indexSerie = library.findIndex( serie => serie.id == idRequest)
+
+    if(indexSerie != -1){
+        library.splice(indexSerie,1)
+        
+        fs.writeFile("./src/models/series.json", JSON.stringify(library), "utf8", function (err) {
+            if(err) {
+                res.status(500).send({ Message: err })
+            }else{
+                res.status(200).send({ Message: "Series deleted" })
+            }
+        })
+    }else{
+        res.status(404).json({ Message: "Id not found"})
+    }
+}
 
 
 module.exports = {
@@ -81,5 +100,6 @@ module.exports = {
     seriesGenre,
     seriesById,
     serieAdd,
-    serieLiked
+    serieLiked,
+    serieDelete
 }
