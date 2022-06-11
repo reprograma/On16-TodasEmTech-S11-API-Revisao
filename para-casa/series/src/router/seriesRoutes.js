@@ -33,7 +33,7 @@ router.patch('/liked/:id', controller.likeSerie)
 
 
 // DESAFIO
-
+// poxa aind anao fish. >.<
 // [POST]  /series/:id/season/:sesasonid/episode
 //         cadastrar novo episódio na termporada onde :id é o :id da série
 //         e :seasonid é o id da temporada
