@@ -17,4 +17,5 @@ router.patch("/liked/:id", controller.updateLiked);
 //Desafio
 router.post("/:id/season/:seasonId/episode", controller.addEpisode);
 
+
 module.exports = router;
