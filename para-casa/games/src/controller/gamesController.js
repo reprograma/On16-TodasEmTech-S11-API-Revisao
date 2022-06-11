@@ -69,6 +69,28 @@ const gameUpdate = (request, response) => {
 
 }
 
+//--------------------------------------------------
+
+const deleteGame = (request, response) => {
+  try {
+      const idGame = request.params.id
+      const gameFound = games.find(game => game.id == idGame) // encontro o game pelo id
+      const gameIndex = games.indexOf(gameFound) 
+
+      if (gameIndex >= 0) { 
+          games.splice(gameIndex, 1) 
+          response.status(200).json([{
+              "message": "Game deletado",
+              "deletado": idGame,
+              games
+          }])          
+    }
+} catch (err) {
+      console.log(err)
+      res.status(500).send({ message: "Erro ao deletar o game" })
+  }
+}
+
 
 
 
@@ -81,6 +103,7 @@ const gameUpdate = (request, response) => {
     getAllGames,
     getGameSearch,
     postNewGame,
-    gameUpdate
+    gameUpdate,
+    deleteGame
 
   }
