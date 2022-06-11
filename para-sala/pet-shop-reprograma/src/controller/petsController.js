@@ -1,4 +1,4 @@
-const pets = require("../models/pets.json")
+ const pets = require("../models/pets.json")
 const fs = require("fs")
 
 const createPet = (req, res) => {
