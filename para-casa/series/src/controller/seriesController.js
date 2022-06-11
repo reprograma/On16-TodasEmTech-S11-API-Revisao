@@ -117,8 +117,32 @@ const deleteSerie =  (req, res) => {
 }
 
 const likeSerie =  (req, res) => {
-    
-}
+     // me passa no body o like
+     let liked = req.body.liked;
+    // pra buscar pelo id
+     let idReq = req.params.id;    
+  // acha a series
+     serieFound = series.find((s) => s.id == idReq);
+
+    if (serieFound) {
+     // substitui o que achou pelo que dei entrada
+      serieFound.favorited = liked;
+      // atualizou? me avisa
+      res.status(200).json([
+        {
+          message: "Série atualizada, viu", 
+          series,
+        },
+      ]);
+      // nao achei
+    } else {
+      res.status(404).json([
+        {
+          message: "Não Encontrado, por favor, tente com uma nova mentalidade",
+        },
+      ]);
+    }
+  };  
 
 
 module.exports = {
