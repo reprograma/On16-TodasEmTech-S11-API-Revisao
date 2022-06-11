@@ -15,8 +15,38 @@ const listaSeries = (request, response) => {
       }
 };
 
-   
+  
+//GET retorna por gênero
+const getByGenero = (request, response) => {
+  
+  const generoRequest = request.query.genre.toLowerCase()
+  const generoFilter = series.filter((serie) => serie.genre.toLowerCase().includes(generoRequest));
+  
+  if (generoFilter.length > 0) {
+    response.status(200).json({
+        message: "Gênero encontrado com sucesso!",
+        generoFilter
+    })
+  } else {
+    response.status(404).send({
+      message: "Gênero não encontrado.",
+    });
+  }
+}; 
 
+//GET retorna uma série específica buscando pelo id
+const getById = (request, response) => {
+    try {
+        let idRequest = request.params.id
+        let serieEncontrada = series.find(serie => serie.id == idRequest)
+        
+        response.status(200).send(serieEncontrada)
+    } catch (err) {
+        response.status(404).send ({
+            "mensagem": "Essa série não existe na sua lista."
+        })
+    }
+}
 
  // POST adciona nova série
 const postSerie = (require, response) => {
@@ -60,8 +90,26 @@ const likedSerie = (request, response) => {
   }
 };
 
+//DELETE series
+const deleteSerie = (request, response) => {
+    const idSerieRequest = request.params.id
+
+    const indiceSerie = series.findIndex((serie) => serie.id == idSerieRequest)
+
+    series.splice(indiceSerie, 1)
+
+    response.status(200).json([{
+        "message": "A série foi deletada com sucesso!.",
+        "deletada": idSerieRequest,
+        series
+    }])
+}
+
 module.exports = {
     postSerie,
+    getByGenero,
+    getById,
     likedSerie,
-    listaSeries
+    listaSeries, 
+    deleteSerie
  }
