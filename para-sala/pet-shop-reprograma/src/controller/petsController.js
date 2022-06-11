@@ -137,9 +137,15 @@ const getPetByAtendende = (req, res) => {
     console.log(atendeRequest)
 
     let petFound = pets.filter(pet => pet.atende.includes(atendeRequest))
+<<<<<<< HEAD
 
     console.log(petFound)
 
+=======
+   
+    console.log(petFound)
+    
+>>>>>>> 3062f636d0290682e05b7731dcbe2422e0cb1380
     if (petFound.length > 0) {
         res.status(200).send(petFound)
     } else {

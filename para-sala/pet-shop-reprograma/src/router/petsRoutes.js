@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+   
+>>>>>>> 3062f636d0290682e05b7731dcbe2422e0cb1380
 const express = require("express")
 const router = express.Router()
 const controller = require("../controller/petsController")

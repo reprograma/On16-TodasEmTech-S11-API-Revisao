@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "pet-shop-reprograma",
   "version": "1.0.0",
   "description": "",
@@ -18,3 +19,22 @@
     "nodemon": "^2.0.16"
   }
 }
+=======
+    "name": "reprograma-revisao",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "fs": "0.0.1-security",
+      "express": "^4.17.1",
+      "nodemon": "^2.0.13"
+    }
+  }
+>>>>>>> 3062f636d0290682e05b7731dcbe2422e0cb1380
