@@ -8,7 +8,8 @@
             "nintendo64",
             "nintendoSwitch"
         ],
-        "liked": false
+        "liked": false,
+        "likeGame": true
     },
     {
         "id": 3,

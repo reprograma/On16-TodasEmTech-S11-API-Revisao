@@ -8,7 +8,7 @@ router.get("/catalogo/:id", controller.getIdGames)
 router.post("/cadastrar", controller.addGames)
 router.put("/catalogo/attGames/:id", controller.attGames)
 router.delete("/delete/:id", controller.deleteGame) 
-// router.patch("/status/:id", controller.likedGames) 
+router.patch("/status/:id", controller.likedGames) 
 
 
 module.exports = router

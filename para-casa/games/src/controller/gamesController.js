@@ -95,15 +95,44 @@ const deleteGame = (request, response) => {
                 }
             })
         } else {
-            response.status(404).send({ message: 'Game não encontrado'})
+            response.status(404).send({ message: 'Game não encontrado' })
         }
     } catch (error) {
         console.log(err)
-        response.status(500).send({message: 'Erro interno'})
+        response.status(500).send({ message: 'Erro interno' })
     }
 }
 
 //Atualiza que o usuário gostou ou não do jogo. Verbo PATCH do HTTP
+const likedGames = (request, response) => {
+    try {
+        const idGame = request.params.id
+        const likeGame = request.body.liked
+        const gameEncont = gamesJS.find(game => game.id == idGame)
+        const indGame = gamesJS.indexOf(gameEncont)
+
+        if (indGame >= 0) {
+            gameEncont.likeGame = likeGame
+            gamesJS.splice(indGame, 1, gameEncont)
+
+            fs.writeFile('./src/models/games.json', JSON.stringify(gamesJS), 'utf8', function (err) {
+                if (err) {
+                    response.status(500).send({ message: err })
+                } else {
+                    console.log('Atualização feita com sucesso!')
+                    const gameAtualizado = gamesJS.find(game => game.id == idGame)
+                    response.status(200).send(gameAtualizado)
+                }
+            })
+        } else {
+            response.status(404).send({ message: 'Game não encontrado' })
+        }
+
+    } catch (error) {
+        response.status(500).send({message: err})
+    }
+}
+
 
 //Exporta as funções aqui definidas
 module.exports = {
@@ -111,5 +140,6 @@ module.exports = {
     addGames,
     getIdGames,
     attGames,
-    deleteGame
+    deleteGame,
+    likedGames
 }
