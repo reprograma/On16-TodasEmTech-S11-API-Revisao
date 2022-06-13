@@ -16,9 +16,19 @@
 
 </center>
 
+### Play no projeto:
 
-
+* Level 1: [sobre nossa API](#sobre)
+* Level 2: [a arquitetura MVC do projeto](#mvc)
+* Level 3: [organização das rotas](#rotas)
+* Game Start: [inicialização do projeto atual](#inicializacao)
+   
+   
 <br/>
+
+<div id='sobre'/> 
+
+## ⭐ Level 1: sobre nossa API
 
 Para esta aplicação criamos algumas rotas utilizando os principais métodos HTTP para manipular uma lista de jogos em JSON. Temos a possibilidade de ler todos os jogos da lista, ler apenas um, adicionar e deletar jogos, além de favoritar ou desfavoritar.
 
@@ -36,12 +46,13 @@ Exemplo de um jogo cadastrado na nossa lista JSON:
 
 ```
 
-- Utilizamos o módulo [fs](https://nodejs.dev/learn/the-nodejs-fs-module) para exercitar o novo conteúdo apresentado em aula e otimizar a funcionalidade do servidor criado, pois conseguiremos ver as manipulações de rota alterando diretamente a lista JSON dentro da nossa pasta Model.
+* Utilizamos o módulo [fs](https://nodejs.dev/learn/the-nodejs-fs-module) para exercitar o novo conteúdo apresentado em aula e otimizar a funcionalidade do servidor criado, pois conseguiremos ver as manipulações de rota alterando diretamente a lista JSON dentro da nossa pasta Model.
 
 <br/>
 
+<div id='mvc'/> 
 
-## 🏰 Arquitetura MVC
+## 🏰 Level 2: a arquitetura MVC do projeto
 
 Utilizamos o padrão de projeto MVC, onde o código é dividido em três camadas principais interconectadas (Model-View-Controller).
 - Model > Temos os nossos dados e seu formato, é a partir dele que pensamos na lógica e funções;
@@ -73,7 +84,9 @@ Demais arquivos e pastas:
 ```
 <br/>
 
-## 🍄 Organização das rotas
+<div id='rotas'/> 
+
+## 🍄 Level 3: organização das rotas
 
 Configuração das rotas para manipular a lista de jogos:
 
@@ -87,30 +100,22 @@ Configuração das rotas para manipular a lista de jogos:
 
 <br/>
 
-## ⭐ Informações de inicialização do projeto
+<div id='inicializacao'/> 
 
-Clonar o repositório
-
-```
-git clone https://github.com/lialaurindo/On16-TodasEmTech-S11-API-Revisao
-```
-
-Entrar na pasta do repositório
+## ▶ Game Start: inicialização do projeto atual
 
 ```
-cd para-casa/games
-```
+# Clonar o repositório
+$ git clone https://github.com/lialaurindo/On16-TodasEmTech-S11-API-Revisao
 
-Instalar as dependências
+# Entrar na pasta do repositório
+$ cd para-casa/games
 
-```
-npm install
-```
+# Instalar as dependências
+$ npm install
 
-Executar o servidor
-
-```
-npm start
+#Executar o servidor
+$ npm start
 ```
 
 Utilizando a porta 1414 no server com endpoint `/play`. Deste modo temos a
@@ -128,23 +133,22 @@ MarioMoji by Lia
                                                             📀📀📀                            ☁☁☁
                                                             🟫🟫🟫🟫
 
-                 📀            ❓                             🍄
+                 📀             ❓                            🍄
                                 🟧                       🟫🟧🟫🟧
                                                                                         🟫
                                                                                      🟫🟫
 🟩🟩🟩                               🟩🟩                           🕳          🟫🟫🟫    🏁
-🟩🟩🟩🟩🟩      🏃‍♂️           🟩🟩🟩🟩🟩🟩🟩            👾  🟩🟩🟩       🟫🟫🟫🟫   🟫  🏰
+🟩🟩🟩🟩🟩      🏃‍♂️           🟩🟩🟩🟩🟩🟩🟩            👾  🟩🟩🟩       🟫🟫🟫🟫   🟫🎀🏰
 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫
 🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫🟫
 
 ```
 
 ---
+[🔝 Voltar ao início](#sobre)
 
 <h6 align="center">
     <br>
     <p align="center">Essa atividade faz parte do cronograma da semana 10 da Turma On16 do bootcamp Todas em Tech <p>
     💜 
 </h6>
-
-
