@@ -1,14 +1,5 @@
 [
     {
-        "id": 1,
-        "title": "Fall Guys",
-        "launchYear": "2020",
-        "consoles": [
-            "ps4"
-        ],
-        "liked": true
-    },
-    {
         "id": 2,
         "title": "Mario Kart",
         "launchYear": "1992",
@@ -17,7 +8,8 @@
             "nintendo64",
             "nintendoSwitch"
         ],
-        "liked": false
+        "liked": false,
+        "likeGame": true
     },
     {
         "id": 3,
@@ -26,6 +18,15 @@
         "consoles": [
             "nintendo64",
             "nintendoSwitch"
+        ],
+        "liked": true
+    },
+    {
+        "id": 4,
+        "title": "NFS",
+        "launchYear": "2002",
+        "consoles": [
+            "PC"
         ],
         "liked": true
     }
