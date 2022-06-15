@@ -1,6 +1,10 @@
 const app = require("./src/app")
-const port = 1313;
+const port = 3030;
 
 app.listen(port, () => {
-    console.log(`Servidor está rodando na porta ${port}`);
-});
+
+    console.log(`servidor na porta ${port}`)
+
+})
+
+
