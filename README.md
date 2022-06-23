@@ -23,8 +23,19 @@ fs.writeFile("./src/models/pets.json", JSON.stringify(pets).
 SINTAXE:
 JSON.stringify(valor[, replacer[, espaço]])
 
+#### Método indexOf
+- O indexOf é utilizado para encontrar um valor dentro de uma string ou array, caso o valor não seja encontrado, ele retorna -1.
 
+É uma função que pode ser encaixada junto com qualquer lógica que precise comparar algum valor, seja dentro de um array ou dentro de uma string.   Abaixo segue  sintaxe distintas
+Sintaxe:
+array.indexOf(elementoDePesquisa, [pontoInicial = 0]) //para array
 
+string.indexOf(elementoDePesquisa, [pontoInicial = 0]) //para string
+
+#### Método slice()
+- O método splice() altera o conteúdo de uma lista, adicionando novos elementos enquanto remove elementos antigos.
+Sintaxe:
+array.splice(indice[, deleteCount[, elemento1[, ...[, elementoN]]])
 ==============================================
 Os slides da aula tão [aqui](https://github.com/reprograma/On16-TodasEmTech-S11-API-Revisao/blob/main/material/revisao.pdf) ❤️
 
