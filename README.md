@@ -1,3 +1,31 @@
+# SEMANA 11 DA REPROGRAMA
+
+# Aula Ministrada por Mayhhara
+
+### Revisão geral do contéudo proposto HTTP API's
+
+### O que aprendi?
+#### File System "fs"
+É um dos principais módulo do NODEjs para trabalhar com arquivos externos no NODEjs e para usar tem que importar o 'fs' salientando que este método também tem  formas síncronas e assíncronas.
+
+SINTAXE:
+var fs = require('fs')
+
+#### Método fs.writelife()
+É usado para gravar de forma assíncrona os dados especificados em arquivo. Por padrão, o arquivo seria substituído se existir.
+SINTAXE:
+fs.writeFile( file, data, options, callback )
+trago como exemplo um trecho do código deste repositório, segue:
+fs.writeFile("./src/models/pets.json", JSON.stringify(pets).
+#### Método  JSON.stringify()
+
+- É um método que converte valores em javascript para uma String JSON, ou seja uma função que altera o comportamento do processo de transformação em string ou array de um objetos (String e Number) que serve como uma lista branca para selecionar como propriedades do objeto valor a ser incluido na string JSON.  
+SINTAXE:
+JSON.stringify(valor[, replacer[, espaço]])
+
+
+
+==============================================
 Os slides da aula tão [aqui](https://github.com/reprograma/On16-TodasEmTech-S11-API-Revisao/blob/main/material/revisao.pdf) ❤️
 
 <h1 align="center">
